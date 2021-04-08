@@ -160,6 +160,70 @@ export class CatalogoPage implements OnInit {
       "name": "Air Jordan4",
       "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
     },
+    {
+      "name": "Air Jordan5",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan5",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan5",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan5",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan5",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan5",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan5",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan5",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan5",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan6",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan6",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan6",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan6",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan6",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan6",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
+    {
+      "name": "Air Jordan6",
+      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
+    },
 ]
 
   constructor(private menu: MenuController) { }
