@@ -28,9 +28,18 @@
     font-size: 20px;
 }
 
+.category-grid {
+    background-color: #dadada;
+    width: 12vw;
+    text-align: center;
+    margin-left: 8vw;
+    font-weight: 450;
+    margin-top: 2vh;
+}
+
 .product-row {
     width: 70vw;
-    margin-left: 20vw;
+    margin-left: 5vw;
 }
 
 .product-card {
@@ -52,8 +61,9 @@
 }
 
 .arrow-grid {
-    margin-left: 80vw;
     margin-top: 5vh;
+    margin-left: 60vw;
+    width: 40vw;
 }
 
 .arrow-icons {
@@ -71,7 +81,6 @@
 
 .footer-grid {
     margin-top: 10vh;
-    height: 70vh;
     background-color: #f1f1f1;
     font-family: 'Segoe UI';
     color: #5e5c63;
@@ -90,6 +99,7 @@
 
 .footer-subtitle {
     font-size: 24px;
+    margin-left: 16vw;
 }
 
 .footer-info {
@@ -109,7 +119,6 @@
 }
 
 .footer-copyright {
-    margin-top: 15vh;
     text-align: center;
     color: #5a595c;
     font-weight: bold;
