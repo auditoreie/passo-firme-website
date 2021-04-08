@@ -71,7 +71,6 @@
 
 .footer-grid {
     margin-top: 10vh;
-    height: 70vh;
     background-color: #f1f1f1;
     font-family: 'Segoe UI';
     color: #5e5c63;
@@ -90,6 +89,7 @@
 
 .footer-subtitle {
     font-size: 24px;
+    margin-left: 16vw;
 }
 
 .footer-info {
@@ -103,8 +103,12 @@
     margin-left: 1vw;
 }
 
+.footer-map {
+    top: -25vh;
+    left: 0vw;
+}
+
 .footer-copyright {
-    margin-top: 15vh;
     text-align: center;
     color: #5a595c;
     font-weight: bold;
