@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuController, IonSlides } from '@ionic/angular';
+import { Products, ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-home',
@@ -16,10 +17,16 @@ export class HomePage implements OnInit {
     spaceBetween: 20
   };
 
-  constructor(private menu: MenuController) { }
+  products: Products[]
+
+  constructor(private menu: MenuController, private productsService: ProductsService) { }
 
   ngOnInit() {
     this.menu.enable(false);
+    this.productsService.getAllProducts().subscribe(res => {
+        this.products = res;
+      });
+    
   }
 
   nextProductSlide() {
