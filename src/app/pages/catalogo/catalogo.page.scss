@@ -1,12 +1,26 @@
 .toolbar-grid {
-    text-align: end;
     margin-top: 2.5vh;
 }
 
-/* .toolbar-logo {
-    margin-top: -2vh;
-    height: 5vh;
-} */
+.menu-items {
+    text-align: end;
+    font-size: 20px;
+    font-weight: 450;
+}
+
+.menu-items:hover {
+    border-bottom: 2px solid rgb(255, 0, 0);
+    transition: all 0.1s ease-out;
+}
+
+.hyperlink {
+    text-decoration: none;
+}
+
+.toolbar-logo {
+    width: 5vw;
+    height: 10vh;
+}
 
 .searchbar-grid {
     width: 60vw;

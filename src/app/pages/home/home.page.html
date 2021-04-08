@@ -2,23 +2,23 @@
   <ion-toolbar>
     <ion-grid class="toolbar-grid">
       <ion-row>
-        <ion-col class="toolbar-logo">
-          <img src="../.././../assets/icon/favicon.png">
-        </ion-col>
-        <ion-col size="9">
-          <ion-title color="primary">
-            <a href="/">Home</a>
-          </ion-title>
-        </ion-col>
         <ion-col>
-          <ion-title color="primary" href="/catalogo">
-            <a href="/catalogo">Catálogo</a>
-          </ion-title>
+          <img class="toolbar-logo" src="../.././../assets/icon/favicon.png">
         </ion-col>
-        <ion-col>
-          <ion-title color="primary">
-            Contato
-          </ion-title>
+        <ion-col size="0.8">
+          <ion-label class="menu-items" color="primary">
+            <a class="hyperlink" href="/">Home</a>
+          </ion-label>
+        </ion-col>
+        <ion-col size="1">
+          <ion-label class="menu-items" color="primary">
+            <a class="hyperlink" href="/catalogo">Catálogo</a>
+          </ion-label>
+        </ion-col>
+        <ion-col size="1">
+          <ion-label class="menu-items" color="primary">
+            <a class="hyperlink" href="/home#contato">Contato</a>
+          </ion-label>
         </ion-col>
       </ion-row>
       <ion-item-divider></ion-item-divider>
@@ -136,54 +136,56 @@
     </ion-row>
   </ion-grid>
 
-  <ion-grid class="footer-grid">
-    <ion-row class="footer-titles">
-      <ion-col>
-        <ion-label class="footer-title">Passo Firme Calçados</ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label class="footer-subtitle">Como chegar</ion-label>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="footer-info">
-        <ion-label>contato@passofirme.com.br</ion-label>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="footer-info">
-        <ion-label>(31) 3232-4242</ion-label>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="footer-info">
-        <ion-label>(31) 99999-9999</ion-label>
-        <ion-icon name="logo-whatsapp" class="logo-whatsapp"></ion-icon>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="footer-info">
-        <ion-label>CNPJ 00.000.000/0001-98</ion-label>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="footer-info">
-        <ion-label>Rua das Gaivotas n 22, Venda Nova</ion-label>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="footer-info">
-        <ion-label>Belo Horizonte MG</ion-label>
-      </ion-col>
-      <ion-col class="footer-map">
-        <iframe width="500" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=Rua%20das%20Gaivotas%20n%2022,%20Venda%20Nova&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="footer-copyright">
-        <ion-label>Desenvolvido por Auditore Ideias Estratégicas</ion-label>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <section id="contato">
+    <ion-grid class="footer-grid">
+      <ion-row class="footer-titles">
+        <ion-col>
+          <ion-label class="footer-title">Passo Firme Calçados</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label class="footer-subtitle">Como chegar</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="footer-info">
+          <ion-label>contato@passofirme.com.br</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="footer-info">
+          <ion-label>(31) 3232-4242</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="footer-info">
+          <ion-label>(31) 99999-9999</ion-label>
+          <ion-icon name="logo-whatsapp" class="logo-whatsapp"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="footer-info">
+          <ion-label>CNPJ 00.000.000/0001-98</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="footer-info">
+          <ion-label>Rua das Gaivotas n 22, Venda Nova</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="footer-info">
+          <ion-label>Belo Horizonte MG</ion-label>
+        </ion-col>
+        <ion-col class="footer-map">
+          <iframe width="500" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=Rua%20das%20Gaivotas%20n%2022,%20Venda%20Nova&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="footer-copyright">
+          <ion-label>Desenvolvido por Auditore Ideias Estratégicas</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
 
 </ion-content>
