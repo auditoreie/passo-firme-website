@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'product-details/:id',
     loadChildren: () => import('./pages/product-details/product-details.module').then( m => m.ProductDetailsPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
   }
 ];
 

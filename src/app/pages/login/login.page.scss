@@ -1,0 +1,52 @@
+.login-grid {
+    border-color: rgb(218, 218, 218);
+    border-width: 2px;
+    border-style: solid;
+    width: 40vw;
+    height: 80vh;
+    margin-top: 10vh;
+}
+
+.logo-col {
+    text-align: center;
+    width: 20vw;
+    height: 20vh;
+    margin-top: 5vh;
+}
+
+.logo {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+}
+
+.input-col {
+    left: 4vw;
+    margin-top: 5vh;
+    margin-bottom: -3vh;
+}
+
+.input {
+    border-color: var(--ion-color-primary);
+    border-width: thin;
+    border-style: solid;
+    border-radius: 3px;
+    width: 30vw;
+}
+
+.input-label {
+    font-weight: 450;
+}
+
+.button-col {
+    left: 4vw;
+    margin-top: 5vh;
+}
+
+.button {
+    width: 30vw;
+    height: 7vh;
+    text-transform: none;
+    font-weight: 600;
+}
