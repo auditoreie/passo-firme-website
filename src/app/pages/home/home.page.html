@@ -42,38 +42,16 @@
       <ion-col class="arrow-back">
         <ion-icon name="chevron-back-circle" class="arrow-icons" color="secondary" (click)="prevProductSlide()"></ion-icon>
       </ion-col>
-      <ion-slides pager="true" [options]="slideOpts" class="product-slides" #productSlides>
-          <ion-slide>
-            <ion-card class="product-card">
-              <img src="https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg">
-            </ion-card>
-          </ion-slide>
-          <ion-slide>
-            <ion-card class="product-card">
-              <img src="https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg">
-            </ion-card>
-          </ion-slide>
-          <ion-slide>
-            <ion-card class="product-card">
-              <img src="https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg">
-            </ion-card>
-          </ion-slide>
-          <ion-slide>
-            <ion-card class="product-card">
-              <img src="https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg">
-            </ion-card>
-          </ion-slide>
-          <ion-slide>
-            <ion-card class="product-card">
-              <img src="https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg">
-            </ion-card>
-          </ion-slide>
-          <ion-slide>
-            <ion-card class="product-card">
-              <img src="https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg">
-            </ion-card>
-          </ion-slide>
-      </ion-slides>
+        <ion-slides [options]="slideOpts" class="product-slides" #productSlides>
+          <ion-slide *ngFor="let item of products">
+            <ion-col>
+              <ion-card class="product-card">
+                <img src="{{ item.image1 }}">
+              </ion-card>
+                <ion-title class="product-title">{{ item.title }}</ion-title> 
+            </ion-col>
+          </ion-slide>     
+        </ion-slides>
       <ion-col class="arrow-forward">
         <ion-icon name="chevron-forward-circle" class="arrow-icons" color="secondary" (click)="nextProductSlide()"></ion-icon>
       </ion-col>
@@ -90,36 +68,14 @@
       <ion-col class="arrow-back">
         <ion-icon name="chevron-back-circle" class="arrow-icons" color="secondary" (click)="prevPromoSlide()"></ion-icon>
       </ion-col>
-      <ion-slides pager="true" [options]="slideOpts" class="product-slides" #promoSlides>
-          <ion-slide>
-            <ion-card class="product-card">
-              <img src="https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg">
-            </ion-card>
-          </ion-slide>
-          <ion-slide>
-            <ion-card class="product-card">
-              <img src="https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg">
-            </ion-card>
-          </ion-slide>
-          <ion-slide>
-            <ion-card class="product-card">
-              <img src="https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg">
-            </ion-card>
-          </ion-slide>
-          <ion-slide>
-            <ion-card class="product-card">
-              <img src="https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg">
-            </ion-card>
-          </ion-slide>
-          <ion-slide>
-            <ion-card class="product-card">
-              <img src="https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg">
-            </ion-card>
-          </ion-slide>
-          <ion-slide>
-            <ion-card class="product-card">
-              <img src="https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg">
-            </ion-card>
+      <ion-slides [options]="slideOpts" class="product-slides" #promoSlides>
+          <ion-slide *ngFor="let item of products">
+            <ion-col>
+              <ion-card class="product-card">
+                <img src="{{ item.image1 }}">
+              </ion-card>
+                <ion-title class="product-title">{{ item.title }}</ion-title> 
+            </ion-col>
           </ion-slide>
       </ion-slides>
       <ion-col class="arrow-forward">
