@@ -1,6 +1,17 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+ion-loading.transparent {
+  .loading-wrapper {
+    background: transparent;
+    box-shadow: none;
+    color: var(--ion-color-primary);
+    .spinner-crescent circle {
+      stroke-width: 8px;
+    }
+  }
+}
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
