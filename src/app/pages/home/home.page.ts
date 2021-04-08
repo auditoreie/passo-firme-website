@@ -17,16 +17,16 @@ export class HomePage implements OnInit {
     spaceBetween: 20
   };
 
-  products: Products[]
+  promotionalProducts: Products[]
 
   constructor(private menu: MenuController, private productsService: ProductsService) { }
 
   ngOnInit() {
     this.menu.enable(false);
-    this.productsService.getAllProducts().subscribe(res => {
-        this.products = res;
+    this.productsService.getPromotionalProducts().subscribe(res => {
+        this.promotionalProducts = res;
+        console.log(res)
       });
-    
   }
 
   nextProductSlide() {
