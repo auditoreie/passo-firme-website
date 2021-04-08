@@ -132,3 +132,9 @@
     text-decoration: none;
     color: #5a595c;
 }
+
+:focus {
+    outline: 0;
+    outline-color: transparent;
+    outline-style: none;
+}
