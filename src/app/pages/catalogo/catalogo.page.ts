@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { Products, ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -8,12 +9,14 @@ import { MenuController } from '@ionic/angular';
 })
 export class CatalogoPage implements OnInit {
 
-  currentPage = 1
+  currentPage = 0
 
   slideOpts = {
     slidesPerView: 3,
     spaceBetween: 20
   };
+
+  products: Products[]
 
   product = [
     {
@@ -226,20 +229,25 @@ export class CatalogoPage implements OnInit {
     },
 ]
 
-  constructor(private menu: MenuController) { }
+  constructor(private menu: MenuController, private productsService: ProductsService) { }
 
   ngOnInit() {
     this.menu.enable(false);
-    console.log(this.lastResultItem())
+    this.productsService.getAllProducts().subscribe(res => {
+        this.products = res;
+        console.log("resultado da lista", this.products)
+        this.currentPage = 1
+      }); 
   }
 
   pageItems() {
     let currentItem = 0
     let maxListSize = 9
+    console.log("lista vai sair daqui e ser parseada", this.products)
     if (this.currentPage > 0) {
       currentItem = maxListSize * this.currentPage - 9
       maxListSize = maxListSize + currentItem
-      return this.product.slice(currentItem, maxListSize)
+      return this.products.slice(currentItem, maxListSize)
     }
   }
 
@@ -248,37 +256,43 @@ export class CatalogoPage implements OnInit {
 
   listAvailablePages = (allProducts: any[]) => {
     const MAX_ITEMS_PER_PAGE = 9
-    const totalPages = Math.ceil(this.product.length / MAX_ITEMS_PER_PAGE)
-    return this.generatePagesArrayByAmount(totalPages)
+    if (this.currentPage > 0) {
+      const totalPages = Math.ceil(this.products.length / MAX_ITEMS_PER_PAGE)
+      return this.generatePagesArrayByAmount(totalPages) 
+    }
   }
 
   parsePageNumbers = (availablePages: any[], currentPage: number) => {
-    const isCurrentPageSmallerThanMinPagesToShow = this.currentPage <= 3
-    const isCurrentPageNearMaxLengthToShow = this.currentPage >= availablePages.length - 2
-    if (isCurrentPageSmallerThanMinPagesToShow) {
-      const currentPaginationList = availablePages.slice(0, 5)
-      if (currentPaginationList.length < availablePages.length) {
-        return [...currentPaginationList, '...']
+    if (this.currentPage > 0) {
+      const isCurrentPageSmallerThanMinPagesToShow = this.currentPage <= 3
+      const isCurrentPageNearMaxLengthToShow = this.currentPage >= availablePages.length - 2
+      if (isCurrentPageSmallerThanMinPagesToShow) {
+        const currentPaginationList = availablePages.slice(0, 5)
+        if (currentPaginationList.length < availablePages.length) {
+          return [...currentPaginationList, '...']
+        }
+        return currentPaginationList
       }
-      return currentPaginationList
-    }
-    if (isCurrentPageNearMaxLengthToShow) {
-      const startPosition = availablePages.length - 5 < 0
-        ? 0
-        : availablePages.length - 5
-      const currentPaginationList = availablePages.slice(startPosition, availablePages.length)
-      if ( currentPaginationList[0] !== 1) {
-        return [ '...', ...currentPaginationList]
+      if (isCurrentPageNearMaxLengthToShow) {
+        const startPosition = availablePages.length - 5 < 0
+          ? 0
+          : availablePages.length - 5
+        const currentPaginationList = availablePages.slice(startPosition, availablePages.length)
+        if ( currentPaginationList[0] !== 1) {
+          return [ '...', ...currentPaginationList]
+        }
+        return currentPaginationList
       }
-      return currentPaginationList
+      return [ '...', ...availablePages.slice(this.currentPage - 3, this.currentPage + 2), '...']
     }
-    return [ '...', ...availablePages.slice(this.currentPage - 3, this.currentPage + 2), '...']
   }
 
   parsedResult() {
-    const pageNumbers = this.listAvailablePages(this.product)
-    const result = this.parsePageNumbers(pageNumbers, this.currentPage) 
-    return [ ...result] 
+    if (this.currentPage > 0) {
+      const pageNumbers = this.listAvailablePages(this.products)
+      const result = this.parsePageNumbers(pageNumbers, this.currentPage) 
+      return [ ...result] 
+    }
   }
 
   lastResultItem() {
