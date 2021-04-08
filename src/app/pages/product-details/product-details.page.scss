@@ -1,0 +1,122 @@
+.toolbar-grid {
+    margin-top: 2.5vh;
+}
+
+.menu-items {
+    text-align: end;
+    font-size: 20px;
+    font-weight: 450;
+}
+
+.menu-items:hover {
+    border-bottom: 2px solid rgb(255, 0, 0);
+    transition: all 0.1s ease-out;
+}
+
+.hyperlink {
+    text-decoration: none;
+}
+
+.toolbar-logo {
+    width: 5vw;
+    height: 10vh;
+}
+
+.product-grid {
+    margin-top: 30vh;
+    margin-left: 10vw;
+}
+
+.product-card {
+    width: 50vw;
+    height: 70vh;
+}
+
+.product-img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+}
+
+.product-labels {
+    margin-left: 3vw;
+    margin-top: 5vh;
+}
+
+.product-row {
+    margin-bottom: 5vh;
+}
+
+.product-title {
+    font-size: 30px;
+}
+
+.product-label {
+    font-size: 15px;
+}
+
+.product-button {
+    width: 20vw;
+    text-transform: none;
+}
+
+.card-grid {
+    margin-left: 10vw;
+    margin-bottom: 30vh;
+}
+
+.card-img {
+    width: 15vw;
+    height: 20vh;
+}
+
+.footer-grid {
+    margin-top: 10vh;
+    background-color: #f1f1f1;
+    font-family: 'Segoe UI';
+    color: #5e5c63;
+    font-weight: 500;
+}
+
+.footer-titles {
+    margin-top: 10vh;
+    margin-bottom: 2vh;
+}
+
+.footer-title {
+    margin-left: 5vw;
+    font-size: 24px;
+}
+
+.footer-subtitle {
+    font-size: 24px;
+    margin-left: 16vw;
+}
+
+.footer-info {
+    margin-left: 5vw;
+    font-size: 16px;
+}
+
+.logo-whatsapp {
+    width: 2vw;
+    height: 4vh;
+    margin-left: 1vw;
+}
+
+.footer-map {
+    top: -25vh;
+    left: 0vw;
+}
+
+.footer-copyright {
+    text-align: center;
+    color: #5a595c;
+    font-weight: bold;
+}
+
+.footer-hyperlink {
+    text-decoration: none;
+    color: #5a595c;
+}
