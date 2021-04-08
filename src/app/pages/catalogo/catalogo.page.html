@@ -71,7 +71,7 @@
           </ion-grid>
         </ion-col>
         <ion-row class="product-row">
-          <ion-col *ngFor="let item of pageItems()" size="4">
+          <ion-col *ngFor="let item of pageItems()" size="4" [routerLink]="['/product-details', item.id]">
             <ion-card class="product-card">
                 <img class="product-img" src="{{ item.image1 }}">
             </ion-card>
