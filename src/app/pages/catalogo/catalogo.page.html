@@ -70,13 +70,14 @@
             </ion-grid>
           </ion-grid>
         </ion-col>
-      <ion-row class="product-row">
-        <ion-col *ngFor="let product of pageItems()" size="4">
-          <ion-card class="product-card">
-              <img  class="product-img" src="{{ product.img }}">
-          </ion-card>
-              <ion-title class="product-title">{{ product.name }}</ion-title>
-        </ion-col>
+        <ion-row class="product-row">
+          <ion-col *ngFor="let product of pageItems()" size="4">
+            <ion-card class="product-card">
+                <img class="product-img" src="{{ product.img }}">
+            </ion-card>
+                <ion-title class="product-title">{{ product.name }}</ion-title>
+          </ion-col>
+        </ion-row>
       </ion-row>
     </ion-grid>
   </div>
