@@ -1,0 +1,76 @@
+<ion-content>
+    <ion-row class="page-title">
+      <ion-col>
+        <ion-label>Editar Produto</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3" class="input-col">
+          <ion-label class="input-label">Código</ion-label>
+          <ion-item class="input">
+            <ion-input type="string" required="true">{{ product.code }}</ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="7" class="input2-col">
+          <ion-label class="input-label">Nome do produto</ion-label>
+          <ion-item class="input">
+            <ion-input type="string" required="true">{{ product.title }}</ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="10" class="input-col">
+          <ion-label class="input-label">Descrição do produto</ion-label>
+          <ion-item class="input-text">
+            <ion-textarea rows="8">{{ product.description }}</ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="checkbox-col">
+          <ion-col>
+            <ion-checkbox></ion-checkbox>
+          </ion-col>
+          <ion-col class="checkbox-label">
+            <ion-label>Produto em promoção</ion-label>
+          </ion-col>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="destaq-col">
+          <img class="destaq-img" src="{{ product.image1 }}">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="destaq-button-col">
+          <ion-button class="destaq-button" color="secondary">Adicionar Imagem de Destaque</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="images-row">
+        <ion-col size="4">
+          <img class="images" src="{{ product.image2 }}">
+        </ion-col>
+        <ion-col size="4">
+          <img class="images" src="{{ product.image3 }}">
+        </ion-col>
+        <ion-col size="4">
+          <img class="images" src="{{ product.image4 }}">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="images-button-col">
+          <ion-button class="images-button" color="secondary">Adicionar Imagem</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="buttons-row">
+        <ion-col class="cancel-button-col">
+          <ion-button class="cancel-button" color="secondary" fill="outline">Cancelar</ion-button>
+        </ion-col>
+        <ion-col class="save-button-col">
+          <ion-button class="save-button" color="secondary">Salvar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>
