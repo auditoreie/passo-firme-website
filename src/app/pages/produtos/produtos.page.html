@@ -1,0 +1,135 @@
+<ion-content>
+  <div *ngIf="exibicaoAtual === 'listagemProdutos'">
+    <ion-row class="page-title">
+      <ion-col>
+        <ion-label>Produtos</ion-label>
+      </ion-col>
+      <ion-col class="add-button-grid">
+        <ion-button color="secondary" class="add-button" (click)="goToNewProductPage()">Adicionar novo</ion-button>
+      </ion-col>
+    </ion-row>
+
+  
+    <ion-grid class="grid">
+      <ion-row>
+        <ion-col class="ion-text-center" size="2">
+          <ion-label >Cód.</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-label class="product-label">Nome do produto</ion-label>
+        </ion-col>
+        <ion-col class="ion-text-center" size="2">
+          <ion-label>Ações</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let item of pageItems()">
+        <ion-col class="ion-text-center" size="2">
+          <ion-label>{{ item.code }}</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-label class="product-label">{{ item.title }}</ion-label>
+        </ion-col>
+        <ion-col size="2">
+          <ion-col class="icon-col">
+            <ion-icon name="create-outline" color="primary" class="icons" [routerLink]="['/editar-produto', item.id]"></ion-icon>
+          </ion-col>
+          <ion-col class="icon-col2">
+            <ion-icon name="close-circle-outline" color="primary" class="icons"></ion-icon>
+          </ion-col>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="arrow-grid">
+      <ion-row>
+        <ion-col>
+          <ion-icon *ngIf="currentPage > 1" name="chevron-back-circle" class="arrow-icons" color="secondary" (click)="prevPage()"></ion-icon>
+        </ion-col>
+        <ion-col size="1" *ngFor="let result of parsedResult(); index as index">
+          <ion-label class="array-label" (click)="goToPage(index)" [ngClass]="{ 'active': result === currentPage }">{{ result }}</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-icon *ngIf="currentPage > 0 && currentPage < lastResultItem()" name="chevron-forward-circle" class="arrow-icons" color="secondary" (click)="nextPage()"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div *ngIf="exibicaoAtual === 'novoProduto'">
+    <ion-row class="page-title">
+      <ion-col>
+        <ion-label>Novo Produto</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3" class="input-col">
+          <ion-label class="input-label">Código</ion-label>
+          <ion-item class="input">
+            <ion-input type="string" required="true"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="7" class="input2-col">
+          <ion-label class="input-label">Nome do produto</ion-label>
+          <ion-item class="input">
+            <ion-input type="string" required="true"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="10" class="input-col">
+          <ion-label class="input-label">Descrição do produto</ion-label>
+          <ion-item class="input-text">
+            <ion-textarea rows="8"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="checkbox-col">
+          <ion-col>
+            <ion-checkbox></ion-checkbox>
+          </ion-col>
+          <ion-col class="checkbox-label">
+            <ion-label>Produto em promoção</ion-label>
+          </ion-col>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="destaq-col">
+          <img class="destaq-img" src="https://flipstyle.store/assets/product-image-default-c27c976d2bb6d3eabd88fd9e10f0d4d6e7361026469ee151c0b6f0ad73e212b6.jpg">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="destaq-button-col">
+          <ion-button class="destaq-button" color="secondary">Adicionar Imagem de Destaque</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="images-row">
+        <ion-col size="4">
+          <img class="images" src="https://flipstyle.store/assets/product-image-default-c27c976d2bb6d3eabd88fd9e10f0d4d6e7361026469ee151c0b6f0ad73e212b6.jpg">
+        </ion-col>
+        <ion-col size="4">
+          <img class="images" src="https://flipstyle.store/assets/product-image-default-c27c976d2bb6d3eabd88fd9e10f0d4d6e7361026469ee151c0b6f0ad73e212b6.jpg">
+        </ion-col>
+        <ion-col size="4">
+          <img class="images" src="https://flipstyle.store/assets/product-image-default-c27c976d2bb6d3eabd88fd9e10f0d4d6e7361026469ee151c0b6f0ad73e212b6.jpg">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="images-button-col">
+          <ion-button class="images-button" color="secondary">Adicionar Imagem</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="buttons-row">
+        <ion-col class="cancel-button-col">
+          <ion-button class="cancel-button" color="secondary" fill="outline">Cancelar</ion-button>
+        </ion-col>
+        <ion-col class="save-button-col">
+          <ion-button class="save-button" color="secondary">Salvar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>
