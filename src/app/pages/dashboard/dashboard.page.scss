@@ -1,0 +1,42 @@
+.page-title {
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 5vh;
+    margin-left: 4vw;
+}
+
+.card {
+    margin-top: 7vh;
+}
+
+.dashboard-card {
+    width: 35vw;
+    height: 40vh;
+    left: 1vw;
+    margin-top: 10vh;
+}
+
+.card-icon {
+    text-align: center;
+
+}
+
+.icon {
+    width: 6vw;
+    height: 6vh;
+}
+
+.card-title {
+    text-align: center;
+    font-weight: bold;
+    max-inline-size: 20vw;
+    font-size: 25px;
+    left: 8vw;
+}
+
+.card-info {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--ion-color-secondary);
+}
