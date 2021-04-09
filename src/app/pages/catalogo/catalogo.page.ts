@@ -17,217 +17,9 @@ export class CatalogoPage implements OnInit {
   };
 
   products: Products[]
+  filteredList: Products[]
 
-  product = [
-    {
-      "name": "Air Jordan",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan2",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan2",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan2",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan2",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan2",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan2",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan2",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan2",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan2",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan3",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan3",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan3",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan3",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan3",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan3",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan3",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan3",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan3",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan4",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan4",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan4",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan4",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan4",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan4",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan4",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan4",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan4",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan5",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan5",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan5",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan5",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan5",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan5",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan5",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan5",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan5",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan6",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan6",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan6",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan6",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan6",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan6",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-    {
-      "name": "Air Jordan6",
-      "img": "https://cdn-images.farfetch-contents.com/12/96/03/49/12960349_13486594_600.jpg",
-    },
-]
+  isItemAvailable = false;
 
   constructor(private menu: MenuController, private productsService: ProductsService) { }
 
@@ -238,6 +30,30 @@ export class CatalogoPage implements OnInit {
         console.log("resultado da lista", this.products)
         this.currentPage = 1
       }); 
+      this.initializeDefaultList();
+  }
+
+  initializeDefaultList() {
+    this.productsService.getAllProducts().subscribe(res => {
+      this.filteredList = res;
+      console.log(res)
+    }); 
+  } 
+
+  filterList(event: any) {
+    // Valor da barra de pesquisa
+    const searchTerm = event.target.value;
+
+    // Se o valor for igual a uma string vazia, os itens não são filtrados
+    if (searchTerm && searchTerm.trim() !== '') {
+        this.isItemAvailable = true
+        this.filteredList = this.products.filter((item) => {
+            return (item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1)
+        }) 
+    } else {
+        this.isItemAvailable = false
+        return this.filteredList = this.products
+    }
   }
 
   pageItems() {
