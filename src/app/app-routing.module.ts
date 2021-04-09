@@ -30,6 +30,18 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'produtos',
+    loadChildren: () => import('./pages/produtos/produtos.module').then( m => m.ProdutosPageModule)
+  },
+  {
+    path: 'editar-produto/:id',
+    loadChildren: () => import('./pages/editar-produto/editar-produto.module').then( m => m.EditarProdutoPageModule)
+  },
+  {
+    path: 'categorias',
+    loadChildren: () => import('./pages/categorias/categorias.module').then( m => m.CategoriasPageModule)
   }
 ];
 
