@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -29,19 +30,23 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'produtos',
-    loadChildren: () => import('./pages/produtos/produtos.module').then( m => m.ProdutosPageModule)
+    loadChildren: () => import('./pages/produtos/produtos.module').then( m => m.ProdutosPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'editar-produto/:id',
-    loadChildren: () => import('./pages/editar-produto/editar-produto.module').then( m => m.EditarProdutoPageModule)
+    loadChildren: () => import('./pages/editar-produto/editar-produto.module').then( m => m.EditarProdutoPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'categorias',
-    loadChildren: () => import('./pages/categorias/categorias.module').then( m => m.CategoriasPageModule)
+    loadChildren: () => import('./pages/categorias/categorias.module').then( m => m.CategoriasPageModule),
+    canActivate: [AuthGuard]
   }
 ];
 
