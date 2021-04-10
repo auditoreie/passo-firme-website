@@ -8,9 +8,8 @@ export interface Products {
   title: string;
   description: string;
   code: string;
-  category: string;
-  isPromototional: boolean;
-  availableSizes: any[];
+  isPromotional: boolean;
+  availableSizes: string;
   image1: string;
   image2: string;
   image3: string;
