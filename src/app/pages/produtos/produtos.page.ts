@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { Products, ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -15,7 +16,19 @@ export class ProdutosPage implements OnInit {
 
   products: Products[]
 
-  constructor(private productsService: ProductsService, private loadingController: LoadingController,) { }
+  product: Products = {
+    title: '',
+    description: '',
+    code: '',
+    isPromotional: false,
+    availableSizes: '',
+    image1: '',
+    image2: '',
+    image3: '',
+    image4: '',
+  };
+
+  constructor(private productsService: ProductsService, private loadingController: LoadingController, private router: Router, private toastCtrl: ToastController,) { }
 
   ngOnInit() {
     this.loadData()
@@ -35,7 +48,6 @@ export class ProdutosPage implements OnInit {
  
     this.productsService.getAllProducts().subscribe(res => {
       this.products = res;
-      console.log("resultado da lista", this.products)
       this.currentPage = 1
       loading.dismiss();
       console.log(res)
@@ -45,7 +57,6 @@ export class ProdutosPage implements OnInit {
   pageItems() {
     let currentItem = 0
     let maxListSize = 9
-    console.log("lista vai sair daqui e ser parseada", this.products)
     if (this.currentPage > 0) {
       currentItem = maxListSize * this.currentPage - 9
       maxListSize = maxListSize + currentItem
@@ -116,4 +127,34 @@ export class ProdutosPage implements OnInit {
     this.currentPage = newPage +1
   }
 
+  cancelAction() {
+    this.exibicaoAtual = "listagemProdutos"
+  }
+
+  saveProduct() {
+    this.productsService.addProduct(this.product).then(() => {
+      this.exibicaoAtual = "listagemProdutos"
+      this.showToast('Produto adicionado com sucesso!')
+    }, err => {
+      this.showToast('Houve algum problema ao adicionar esse produto.');
+    })
+  }
+
+  deleteProduct() {
+    if (this.product.id !== undefined && this.parsedResult !== undefined) {
+    this.productsService.deleteProduct(this.product.id).then(() => {
+      console.log(this.product.id)
+      this.showToast('Produto deletado com sucesso!')
+    }, err => {
+      this.showToast('Houve um problema ao deletar esse produto.')
+    })
+   }
+  }
+
+  showToast(msg) {
+    this.toastCtrl.create({
+      message: msg,
+      duration: 2000
+    }).then(toast => toast.present())
+  }
 }

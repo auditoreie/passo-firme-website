@@ -34,7 +34,7 @@
             <ion-icon name="create-outline" color="primary" class="icons" [routerLink]="['/editar-produto', item.id]"></ion-icon>
           </ion-col>
           <ion-col class="icon-col2">
-            <ion-icon name="close-circle-outline" color="primary" class="icons"></ion-icon>
+            <ion-icon name="close-circle-outline" color="primary" class="icons" (click)="deleteProduct()"></ion-icon>
           </ion-col>
         </ion-col>
       </ion-row>
@@ -67,13 +67,13 @@
         <ion-col size="3" class="input-col">
           <ion-label class="input-label">Código</ion-label>
           <ion-item class="input">
-            <ion-input type="string" required="true"></ion-input>
+            <ion-input type="number" required="true" [(ngModel)]="product.code"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="7" class="input2-col">
           <ion-label class="input-label">Nome do produto</ion-label>
           <ion-item class="input">
-            <ion-input type="string" required="true"></ion-input>
+            <ion-input type="string" required="true" [(ngModel)]="product.title"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -81,14 +81,14 @@
         <ion-col size="10" class="input-col">
           <ion-label class="input-label">Descrição do produto</ion-label>
           <ion-item class="input-text">
-            <ion-textarea rows="8"></ion-textarea>
+            <ion-textarea rows="8" [(ngModel)]="product.description"></ion-textarea>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="checkbox-col">
           <ion-col>
-            <ion-checkbox></ion-checkbox>
+            <ion-checkbox [(ngModel)]="product.isPromotional"></ion-checkbox>
           </ion-col>
           <ion-col class="checkbox-label">
             <ion-label>Produto em promoção</ion-label>
@@ -123,10 +123,10 @@
       </ion-row>
       <ion-row class="buttons-row">
         <ion-col class="cancel-button-col">
-          <ion-button class="cancel-button" color="secondary" fill="outline">Cancelar</ion-button>
+          <ion-button class="cancel-button" color="secondary" fill="outline" (click)="cancelAction()">Cancelar</ion-button>
         </ion-col>
         <ion-col class="save-button-col">
-          <ion-button class="save-button" color="secondary">Salvar</ion-button>
+          <ion-button class="save-button" color="secondary" (click)="saveProduct()">Salvar</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -66,4 +66,22 @@ export class ProductsService {
   addProduct(products: Products): Promise<DocumentReference> {
     return this.productsCollection.add(products);
   }
+ 
+  updateProduct(product: Products): Promise<void> {
+    return this.productsCollection.doc(product.id).update({  
+      code: product.code, 
+      title: product.title, 
+      description: product.description, 
+      isPromotional: product.isPromotional,
+      availableSizes: product.availableSizes,
+      image1: product.image1,
+      image2: product.image2,
+      image3: product.image3,
+      image4: product.image4
+     });
+  }
+ 
+  deleteProduct(id: string): Promise<void> {
+    return this.productsCollection.doc(id).delete();
+  }
 }
