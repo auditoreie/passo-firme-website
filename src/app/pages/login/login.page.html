@@ -9,7 +9,7 @@
       <ion-col class="input-col">
         <ion-label class="input-label">Login</ion-label>
         <ion-item class="input">
-          <ion-input type="string" required="true"></ion-input>
+          <ion-input type="string" required="true" #email required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -17,13 +17,13 @@
       <ion-col class="input-col">
         <ion-label class="input-label">Senha</ion-label>
         <ion-item class="input">
-          <ion-input type="password" required="true"></ion-input>
+          <ion-input type="password" required="true" #password required></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col  class="button-col">
-        <ion-button class="button">Entrar</ion-button>
+        <ion-button class="button" (click)="logIn(email, password)">Entrar</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

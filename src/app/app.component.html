@@ -5,7 +5,7 @@
         <ion-list id="inbox-list" class="list">
           <ion-item lines="none">
             <ion-list-header class="title">Bem vindo, Eric</ion-list-header>
-            <ion-icon slot="end" name="log-out-outline" class="logout" routerLink="/login"></ion-icon>
+            <ion-icon slot="end" name="log-out-outline" class="logout" (click)="authService.SignOut()"></ion-icon>
           </ion-item>
         </ion-list>
 
