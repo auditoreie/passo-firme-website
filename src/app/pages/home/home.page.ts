@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuController, IonSlides } from '@ionic/angular';
-import { Products, ProductsService } from 'src/app/services/products.service';
+import { Products, Categories, ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-home',
@@ -20,6 +20,7 @@ export class HomePage implements OnInit {
   promotionalProducts: Products[]
   filteredList: Products[]
   products: Products[]
+  categories: Categories[]
 
   isItemAvailable = false;
      
@@ -36,6 +37,12 @@ export class HomePage implements OnInit {
       this.products = res;
       console.log(res)
     });
+
+    this.productsService.getAllCategories().subscribe(res => {
+      this.categories = res;
+      console.log(res)
+    });
+
     this.initializeDefaultList();
   }
 

@@ -15,6 +15,11 @@ export interface Products {
   image3: string;
   image4: string;
 }
+
+export interface Categories {
+  id?: string;
+  title: string;
+}
  
 @Injectable({
   providedIn: 'root'
@@ -22,12 +27,15 @@ export interface Products {
 export class ProductsService {
   private productsCollection: AngularFirestoreCollection<Products>;
   private promotionalProductsCollection: AngularFirestoreCollection<Products>
+  private categoriesCollection: AngularFirestoreCollection<Categories>
 
   private products: Observable<Products[]>;
   private promotionalProducts: Observable<Products[]>
+  private categories: Observable<Categories[]>
  
   constructor(db: AngularFirestore) {
-    this.productsCollection = db.collection<Products>('products');
+    this.categoriesCollection = db.collection<Categories>('categories')
+    this.productsCollection = db.collection<Products>('products')
     this.promotionalProductsCollection = db.collection<Products>('products', ref => ref.where('isPromotional', '==', true));
  
     this.products = this.productsCollection.snapshotChanges().pipe(
@@ -39,6 +47,18 @@ export class ProductsService {
         });
       })
     );
+
+    this.categories = this.categoriesCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
+
+    console.log(this.categories, this.categoriesCollection)
 
     this.promotionalProducts = this.promotionalProductsCollection.snapshotChanges().pipe(
       map(actions => {
@@ -55,8 +75,34 @@ export class ProductsService {
     return this.products;
   }
 
+  getAllCategories() {
+    return this.categories
+  }
+
   getPromotionalProducts() {
     return this.promotionalProducts;
+  }
+
+  getCategory(id) {
+    return this.categoriesCollection.doc<Categories>(id).valueChanges()
+  }
+
+  addCategory(categories: Categories): Promise<DocumentReference> {
+    return this.categoriesCollection.add(categories)
+  }
+
+  updateCategory(category: Categories): Promise<void> {
+    return this.categoriesCollection.doc(category.id).update({
+      title: category.title
+    })
+  }
+
+  getProductByCategory(category: Categories, db: AngularFirestore) {
+    return this.categoriesCollection = db.collection(`categories/${category.id}/products`)
+  }
+
+  addProductByCategory(category: Categories, db: AngularFirestore, products: Products) {
+    return db.collection(`categories/${category.id}/products`).add(products)
   }
 
   getProduct(id) {
