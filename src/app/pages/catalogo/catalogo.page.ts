@@ -25,6 +25,7 @@ export class CatalogoPage implements OnInit {
   filteredList: Products[]
 
   isItemAvailable = false;
+  isCategorySeeOptionEnable = false;
 
   constructor(private menu: MenuController, private productsService: ProductsService) { }
 
@@ -32,7 +33,6 @@ export class CatalogoPage implements OnInit {
     this.menu.enable(false);
     this.productsService.getAllProducts().subscribe(res => {
         this.products = res;
-        console.log("resultado da lista", this.products)
         this.currentPage = 1
       });
     this.productsService.getAllCategories().subscribe(categories => {
@@ -40,12 +40,10 @@ export class CatalogoPage implements OnInit {
     });
   }
 
-  initializeDefaultList() {
-    this.productsService.getAllProducts().subscribe(res => {
-      this.filteredList = res;
-      console.log(res)
-    }); 
-  } 
+  seeCategory(id) {
+    this.isCategorySeeOptionEnable = true
+    console.log(id)
+  }
 
   filterList(event: any) {
     // Valor da barra de pesquisa
@@ -66,7 +64,6 @@ export class CatalogoPage implements OnInit {
   pageItems() {
     let currentItem = 0
     let maxListSize = 9
-    console.log("lista vai sair daqui e ser parseada", this.products)
     if (this.currentPage > 0) {
       currentItem = maxListSize * this.currentPage - 9
       maxListSize = maxListSize + currentItem
