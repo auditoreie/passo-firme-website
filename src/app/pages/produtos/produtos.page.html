@@ -97,28 +97,92 @@
       </ion-row>
       <ion-row>
         <ion-col class="destaq-col">
-          <img class="destaq-img" src="https://flipstyle.store/assets/product-image-default-c27c976d2bb6d3eabd88fd9e10f0d4d6e7361026469ee151c0b6f0ad73e212b6.jpg">
+          <img class="destaq-img" src="{{ product.image1 }}">
         </ion-col>
       </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label>
+              <ion-input
+                type="file"
+                class="text-nowrap text-truncate"
+                (change)="selectFileForImage1($event)"
+              ></ion-input>
+            </ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="currentFileUploadForImage1">
+          <ion-col>
+            <ion-progress-bar value="{{ percentageForImage1 }}"></ion-progress-bar>
+          </ion-col>
+        </ion-row>
       <ion-row>
         <ion-col class="destaq-button-col">
-          <ion-button class="destaq-button" color="secondary">Adicionar Imagem de Destaque</ion-button>
+          <ion-button class="destaq-button" color="secondary" [disabled]="!selectedFilesForImage1" (click)="uploadImage1()">
+            Adicionar Imagem de Destaque
+          </ion-button>
         </ion-col>
       </ion-row>
       <ion-row class="images-row">
         <ion-col size="4">
-          <img class="images" src="https://flipstyle.store/assets/product-image-default-c27c976d2bb6d3eabd88fd9e10f0d4d6e7361026469ee151c0b6f0ad73e212b6.jpg">
+          <img class="images" src="{{ product.image2 }}">
         </ion-col>
         <ion-col size="4">
-          <img class="images" src="https://flipstyle.store/assets/product-image-default-c27c976d2bb6d3eabd88fd9e10f0d4d6e7361026469ee151c0b6f0ad73e212b6.jpg">
+          <img class="images" src="{{ product.image3 }}">
         </ion-col>
         <ion-col size="4">
-          <img class="images" src="https://flipstyle.store/assets/product-image-default-c27c976d2bb6d3eabd88fd9e10f0d4d6e7361026469ee151c0b6f0ad73e212b6.jpg">
+          <img class="images" src="{{ product.image4 }}">
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col class="images-button-col">
-          <ion-button class="images-button" color="secondary">Adicionar Imagem</ion-button>
+        <ion-col>
+          <ion-label>
+            <ion-input
+              type="file"
+              class="text-nowrap text-truncate"
+              (change)="selectFileForImage2($event)"
+            ></ion-input>
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <ion-input
+              type="file"
+              class="text-nowrap text-truncate"
+              (change)="selectFileForImage3($event)"
+            ></ion-input>
+          </ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>
+            <ion-input
+              type="file"
+              class="text-nowrap text-truncate"
+              (change)="selectFileForImage4($event)"
+            ></ion-input>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" *ngIf="currentFileUploadForImage2">
+          <ion-progress-bar value="{{ percentageForImage2 }}"></ion-progress-bar>
+        </ion-col>
+        <ion-col size="4" *ngIf="currentFileUploadForImage3">
+          <ion-progress-bar value="{{ percentageForImage3 }}"></ion-progress-bar>
+        </ion-col>
+        <ion-col size="4" *ngIf="currentFileUploadForImage4">
+          <ion-progress-bar value="{{ percentageForImage4 }}"></ion-progress-bar>
+        </ion-col>
+      </ion-row>
+      <ion-row class="images-button-row">
+        <ion-col size="4">
+          <ion-button class="images-button" color="secondary" [disabled]="!selectedFilesForImage2" (click)="uploadImage2()">Adicionar Imagem</ion-button>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button class="images-button" color="secondary" [disabled]="!selectedFilesForImage3" (click)="uploadImage3()">Adicionar Imagem</ion-button>
+        </ion-col>
+        <ion-col size="4">
+          <ion-button class="images-button" color="secondary" [disabled]="!selectedFilesForImage4" (click)="uploadImage4()">Adicionar Imagem</ion-button>
         </ion-col>
       </ion-row>
       <ion-row class="buttons-row">

@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { FileUploadService } from 'src/app/services/file-upload.service';
 import { FileUpload } from '../_models/fileUpload';
+import { finalize } from 'rxjs/operators';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 
 @Component({
@@ -27,9 +30,19 @@ export class EditarProdutoPage implements OnInit {
 
   productId = null;
 
-  selectedFiles: FileList;
-  currentFileUpload: FileUpload;
-  percentage: number;
+  selectedFilesForImage1: FileList;
+  currentFileUploadForImage1: FileUpload;
+  selectedFilesForImage2: FileList;
+  currentFileUploadForImage2: FileUpload;
+  selectedFilesForImage3: FileList;
+  currentFileUploadForImage3: FileUpload;
+  selectedFilesForImage4: FileList;
+  currentFileUploadForImage4: FileUpload;
+  percentageForImage1: number;
+  percentageForImage2: number;
+  percentageForImage3: number;
+  percentageForImage4: number;
+  private basePath = '/uploads';
 
   constructor(
     private productsService: ProductsService, 
@@ -37,7 +50,9 @@ export class EditarProdutoPage implements OnInit {
     private route: ActivatedRoute,  
     private router: Router, 
     private toastCtrl: ToastController,
-    private uploadService: FileUploadService
+    private uploadService: FileUploadService,
+    private storage: AngularFireStorage,
+    private db: AngularFireDatabase,
   ) { }
 
   ngOnInit() { }
@@ -59,26 +74,136 @@ export class EditarProdutoPage implements OnInit {
     }
   }
 
-  selectFile(event): void {
-    this.selectedFiles = event.target.files;
+  selectFileForImage1(event): void {
+    this.percentageForImage1 = 0
+    this.selectedFilesForImage1 = event.target.files;
   }
 
-  upload(): void {
-    const file = this.selectedFiles.item(0)
-    this.selectedFiles = undefined
+  selectFileForImage2(event): void {
+    this.percentageForImage2 = 0
+    this.selectedFilesForImage2 = event.target.files;
+  }
 
-    this.currentFileUpload = new FileUpload(file)
-    this.currentFileUpload.url = new FileUpload(file).url
-    console.log(this.currentFileUpload, this.currentFileUpload.url)
+  selectFileForImage3(event): void {
+    this.percentageForImage3 = 0
+    this.selectedFilesForImage3 = event.target.files;
+  }
+
+  selectFileForImage4(event): void {
+    this.percentageForImage4 = 0
+    this.selectedFilesForImage4 = event.target.files;
+  }
+
+  uploadImage1(): void {
+    const file = this.selectedFilesForImage1.item(0)
+    this.selectedFilesForImage1 = undefined
+
+    this.currentFileUploadForImage1 = new FileUpload(file)
     
-    this.uploadService.pushFileToStorage(this.currentFileUpload).subscribe(
-      percentage => {
-        this.percentage = Math.round(percentage);
-      },
-      error => {
-        console.log(error);
-      }
-    )
+      const filePath = `${this.basePath}/${this.currentFileUploadForImage1.file.name}`;
+      const storageRef = this.storage.ref(filePath);
+      const uploadTask = this.storage.upload(filePath, this.currentFileUploadForImage1.file);
+  
+      uploadTask.snapshotChanges().pipe(
+        finalize(() => {
+          storageRef.getDownloadURL().subscribe(downloadURL => {
+            this.currentFileUploadForImage1.url = downloadURL;
+            this.product.image1 = downloadURL
+            console.log(downloadURL)
+            this.currentFileUploadForImage1.name = this.currentFileUploadForImage1.file.name;
+            this.saveFileDataFromImage1(this.currentFileUploadForImage1);
+          });
+        })
+      ).subscribe();
+  }
+
+  uploadImage2(): void {
+    const file = this.selectedFilesForImage2.item(0)
+    this.selectedFilesForImage2 = undefined
+
+    this.currentFileUploadForImage2 = new FileUpload(file)
+    
+      const filePath = `${this.basePath}/${this.currentFileUploadForImage2.file.name}`;
+      const storageRef = this.storage.ref(filePath);
+      const uploadTask = this.storage.upload(filePath, this.currentFileUploadForImage2.file);
+  
+      uploadTask.snapshotChanges().pipe(
+        finalize(() => {
+          storageRef.getDownloadURL().subscribe(downloadURL => {
+            this.currentFileUploadForImage2.url = downloadURL;
+            this.product.image2 = downloadURL
+            console.log(downloadURL)
+            this.currentFileUploadForImage2.name = this.currentFileUploadForImage2.file.name;
+            this.saveFileDataFromImage2(this.currentFileUploadForImage2);
+          });
+        })
+      ).subscribe();
+  }
+
+  uploadImage3(): void {
+    const file = this.selectedFilesForImage3.item(0)
+    this.selectedFilesForImage3 = undefined
+
+    this.currentFileUploadForImage3 = new FileUpload(file)
+    
+      const filePath = `${this.basePath}/${this.currentFileUploadForImage3.file.name}`;
+      const storageRef = this.storage.ref(filePath);
+      const uploadTask = this.storage.upload(filePath, this.currentFileUploadForImage3.file);
+  
+      uploadTask.snapshotChanges().pipe(
+        finalize(() => {
+          storageRef.getDownloadURL().subscribe(downloadURL => {
+            this.currentFileUploadForImage3.url = downloadURL;
+            this.product.image3 = downloadURL
+            console.log(downloadURL)
+            this.currentFileUploadForImage3.name = this.currentFileUploadForImage3.file.name;
+            this.saveFileDataFromImage3(this.currentFileUploadForImage3);
+          });
+        })
+      ).subscribe();
+  }
+
+  uploadImage4(): void {
+    const file = this.selectedFilesForImage4.item(0)
+    this.selectedFilesForImage4 = undefined
+
+    this.currentFileUploadForImage4 = new FileUpload(file)
+    
+      const filePath = `${this.basePath}/${this.currentFileUploadForImage4.file.name}`;
+      const storageRef = this.storage.ref(filePath);
+      const uploadTask = this.storage.upload(filePath, this.currentFileUploadForImage4.file);
+  
+      uploadTask.snapshotChanges().pipe(
+        finalize(() => {
+          storageRef.getDownloadURL().subscribe(downloadURL => {
+            this.currentFileUploadForImage4.url = downloadURL;
+            this.product.image4 = downloadURL
+            console.log(downloadURL)
+            this.currentFileUploadForImage4.name = this.currentFileUploadForImage4.file.name;
+            this.saveFileDataFromImage4(this.currentFileUploadForImage4);
+          });
+        })
+      ).subscribe();
+  }
+
+  private saveFileDataFromImage1(fileUpload: FileUpload): void {
+    this.db.list(this.basePath).push(fileUpload).then;
+    this.percentageForImage1 = 100
+  }
+
+  private saveFileDataFromImage2(fileUpload: FileUpload): void {
+    this.db.list(this.basePath).push(fileUpload).then;
+    this.percentageForImage2 = 100
+  }
+
+  private saveFileDataFromImage3(fileUpload: FileUpload): void {
+    this.db.list(this.basePath).push(fileUpload).then;
+    this.percentageForImage3 = 100
+  }
+
+  private saveFileDataFromImage4(fileUpload: FileUpload): void {
+    this.db.list(this.basePath).push(fileUpload).then;
+    this.percentageForImage4 = 100
   }
 
   cancelAction() {
