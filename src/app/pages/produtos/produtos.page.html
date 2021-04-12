@@ -34,7 +34,7 @@
             <ion-icon name="create-outline" color="primary" class="icons" [routerLink]="['/editar-produto', item.id]"></ion-icon>
           </ion-col>
           <ion-col class="icon-col2">
-            <ion-icon name="close-circle-outline" color="primary" class="icons" (click)="deleteProduct()"></ion-icon>
+            <ion-icon name="close-circle-outline" color="primary" class="icons" (click)="deleteProduct(item.id)"></ion-icon>
           </ion-col>
         </ion-col>
       </ion-row>
@@ -126,7 +126,7 @@
           <ion-button class="cancel-button" color="secondary" fill="outline" (click)="cancelAction()">Cancelar</ion-button>
         </ion-col>
         <ion-col class="save-button-col">
-          <ion-button class="save-button" color="secondary" (click)="saveProduct()">Salvar</ion-button>
+          <ion-button class="save-button" color="secondary" (click)="addProduct()">Salvar</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

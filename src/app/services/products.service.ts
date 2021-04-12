@@ -97,8 +97,9 @@ export class ProductsService {
     })
   }
 
-  getProductByCategory(category: Categories, db: AngularFirestore) {
-    return this.categoriesCollection = db.collection(`categories/${category.id}/products`)
+  deleteCategory(id: string): Promise<void> {
+    return this.categoriesCollection.doc(id).delete();
+  }
   }
 
   addProductByCategory(category: Categories, db: AngularFirestore, products: Products) {

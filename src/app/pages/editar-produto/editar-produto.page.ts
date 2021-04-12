@@ -40,26 +40,23 @@ export class EditarProdutoPage implements OnInit {
     private uploadService: FileUploadService
   ) { }
 
-  ngOnInit() {
-    this.productId = this.route.snapshot.params['id'];
-    if (this.productId)  {
-      this.loadData();
-    }
-  }
-  
-  async loadData() {
+  ngOnInit() { }
+
+  async ionViewWillEnter() {
     const loading = await this.loadingController.create({
       spinner: 'crescent',
       cssClass: 'transparent',
       message: 'Carregando..'
     });
     await loading.present();
- 
-    this.productsService.getProduct(this.productId).subscribe(res => {
-      this.product = res;
-      loading.dismiss();
-      console.log(res)
-    });
+    let id = this.route.snapshot.paramMap.get('id');
+    this.productId = id
+    if (id) {
+      this.productsService.getProduct(id).subscribe(product => {
+        this.product = product;
+        loading.dismiss();
+      });
+    }
   }
 
   selectFile(event): void {
@@ -89,6 +86,7 @@ export class EditarProdutoPage implements OnInit {
   }
 
   saveProduct() {
+    this.product.id = this.productId
     this.productsService.updateProduct(this.product).then(() => {
       this.router.navigateByUrl('/produtos');
       this.showToast('Produto editado com sucesso!')

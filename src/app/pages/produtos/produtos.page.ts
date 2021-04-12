@@ -131,7 +131,7 @@ export class ProdutosPage implements OnInit {
     this.exibicaoAtual = "listagemProdutos"
   }
 
-  saveProduct() {
+  addProduct() {
     this.productsService.addProduct(this.product).then(() => {
       this.exibicaoAtual = "listagemProdutos"
       this.showToast('Produto adicionado com sucesso!')
@@ -140,15 +140,15 @@ export class ProdutosPage implements OnInit {
     })
   }
 
-  deleteProduct() {
-    if (this.product.id !== undefined && this.parsedResult !== undefined) {
-    this.productsService.deleteProduct(this.product.id).then(() => {
-      console.log(this.product.id)
+  deleteProduct(id) {
+    if (window.confirm('Você tem certeza que quer deletar esse produto?')) { 
+    this.productsService.deleteProduct(id).then(() => {
+      console.log(id)
       this.showToast('Produto deletado com sucesso!')
     }, err => {
       this.showToast('Houve um problema ao deletar esse produto.')
     })
-   }
+    }
   }
 
   showToast(msg) {
