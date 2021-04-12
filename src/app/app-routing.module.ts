@@ -47,6 +47,10 @@ const routes: Routes = [
     path: 'categorias',
     loadChildren: () => import('./pages/categorias/categorias.module').then( m => m.CategoriasPageModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'editar-categoria/:id',
+    loadChildren: () => import('./pages/editar-categoria/editar-categoria.module').then( m => m.EditarCategoriaPageModule)
   }
 ];
 

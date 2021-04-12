@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
-import { Products, ProductsService } from 'src/app/services/products.service';
+import { LoadingController, ToastController } from '@ionic/angular';
+import { Categories, ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-categorias',
@@ -13,9 +13,13 @@ export class CategoriasPage implements OnInit {
 
   exibicaoAtual = "listagemCategorias"
 
-  products: Products[]
+  categories: Categories[]
 
-  constructor(private productsService: ProductsService, private loadingController: LoadingController,) { }
+  category: Categories = {
+    title: ''
+  }
+
+  constructor(private productsService: ProductsService, private loadingController: LoadingController, private toastCtrl: ToastController,) { }
 
   ngOnInit() {
     this.loadData()
@@ -33,9 +37,8 @@ export class CategoriasPage implements OnInit {
     });
     await loading.present();
  
-    this.productsService.getAllProducts().subscribe(res => {
-      this.products = res;
-      console.log("resultado da lista", this.products)
+    this.productsService.getAllCategories().subscribe(res => {
+      this.categories = res;
       this.currentPage = 1
       loading.dismiss();
       console.log(res)
@@ -45,11 +48,10 @@ export class CategoriasPage implements OnInit {
   pageItems() {
     let currentItem = 0
     let maxListSize = 9
-    console.log("lista vai sair daqui e ser parseada", this.products)
     if (this.currentPage > 0) {
       currentItem = maxListSize * this.currentPage - 9
       maxListSize = maxListSize + currentItem
-      return this.products.slice(currentItem, maxListSize)
+      return this.categories.slice(currentItem, maxListSize)
     }
   }
 
@@ -59,7 +61,7 @@ export class CategoriasPage implements OnInit {
   listAvailablePages = (allProducts: any[]) => {
     const MAX_ITEMS_PER_PAGE = 9
     if (this.currentPage > 0) {
-      const totalPages = Math.ceil(this.products.length / MAX_ITEMS_PER_PAGE)
+      const totalPages = Math.ceil(this.categories.length / MAX_ITEMS_PER_PAGE)
       return this.generatePagesArrayByAmount(totalPages) 
     }
   }
@@ -91,7 +93,7 @@ export class CategoriasPage implements OnInit {
 
   parsedResult() {
     if (this.currentPage > 0) {
-      const pageNumbers = this.listAvailablePages(this.products)
+      const pageNumbers = this.listAvailablePages(this.categories)
       const result = this.parsePageNumbers(pageNumbers, this.currentPage) 
       return [ ...result] 
     }
@@ -116,4 +118,35 @@ export class CategoriasPage implements OnInit {
     this.currentPage = newPage +1
   }
 
+  cancelAction() {
+    this.exibicaoAtual = "listagemCategorias"
+  }
+
+  addCategory() {
+    this.productsService.addCategory(this.category).then(() => {
+      this.exibicaoAtual = "listagemCategorias"
+      this.showToast('Categoria adicionada com sucesso!')
+    }, err => {
+      this.showToast('Houve algum problema ao adicionar essa categoria.');
+    })
+  }
+
+  deleteCategory(id) {
+    console.log(id)
+    if (window.confirm('Você tem certeza que quer deletar essa categoria?')) { 
+    this.productsService.deleteCategory(id).then(() => {
+      console.log(id)
+      this.showToast('Categoria deletada com sucesso!')
+    }, err => {
+      this.showToast('Houve um problema ao deletar essa categoria.')
+    })
+    }
+  }
+
+  showToast(msg) {
+    this.toastCtrl.create({
+      message: msg,
+      duration: 2000
+    }).then(toast => toast.present())
+  }
 }

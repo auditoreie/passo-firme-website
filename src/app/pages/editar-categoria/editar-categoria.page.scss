@@ -1,0 +1,64 @@
+.page-title {
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 5vh;
+    margin-left: 4vw;
+}
+
+.input-col {
+    left: 4vw;
+    margin-top: 10vh;
+    margin-bottom: 0vh;
+}
+
+.input {
+    border-color: #E6E6E6;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.input-text {
+    border-color: #E6E6E6;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.input-label {
+    font-weight: 450;
+}
+
+.buttons-row {
+    margin-top: 5vh;
+}
+
+.cancel-button-col {
+    margin-left: 4vw;
+}
+
+.cancel-button {
+    text-transform: none;
+    font-weight: 600;
+    font-size: 20px;
+    width: 30vw;
+    height: 9vh;
+}
+
+.save-button-col {
+    margin-left: -4vw;
+}
+
+.save-button {
+    text-transform: none;
+    font-weight: 450;
+    font-size: 20px;
+    width: 30vw;
+    height: 9vh;
+}
+
+:focus {
+    outline: 0;
+    outline-color: transparent;
+    outline-style: none;
+}

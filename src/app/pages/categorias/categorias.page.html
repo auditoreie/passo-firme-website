@@ -25,10 +25,10 @@
         </ion-col>
         <ion-col size="2">
           <ion-col class="icon-col">
-            <ion-icon name="create-outline" color="primary" class="icons" [routerLink]="['/editar-produto', item.id]"></ion-icon>
+            <ion-icon name="create-outline" color="primary" class="icons" [routerLink]="['/editar-categoria', item.id]"></ion-icon>
           </ion-col>
           <ion-col class="icon-col2">
-            <ion-icon name="close-circle-outline" color="primary" class="icons"></ion-icon>
+            <ion-icon name="close-circle-outline" color="primary" class="icons" (click)="deleteCategory(item.id)"></ion-icon>
           </ion-col>
         </ion-col>
       </ion-row>
@@ -61,16 +61,16 @@
         <ion-col size="10" class="input-col">
           <ion-label class="input-label">Nome da categoria</ion-label>
           <ion-item class="input">
-            <ion-input type="string" required="true"></ion-input>
+            <ion-input type="string" required="true" [(ngModel)]="category.title"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row class="buttons-row">
         <ion-col class="cancel-button-col">
-          <ion-button class="cancel-button" color="secondary" fill="outline">Cancelar</ion-button>
+          <ion-button class="cancel-button" color="secondary" fill="outline" (click)="cancelAction()">Cancelar</ion-button>
         </ion-col>
         <ion-col class="save-button-col">
-          <ion-button class="save-button" color="secondary">Salvar</ion-button>
+          <ion-button class="save-button" color="secondary" (click)="addCategory()">Salvar</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
