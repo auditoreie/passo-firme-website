@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Products, ProductsService } from './../../services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
-import { FileUploadService } from 'src/app/services/file-upload.service';
 import { FileUpload } from '../_models/fileUpload';
 import { finalize } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -50,7 +49,6 @@ export class EditarProdutoPage implements OnInit {
     private route: ActivatedRoute,  
     private router: Router, 
     private toastCtrl: ToastController,
-    private uploadService: FileUploadService,
     private storage: AngularFireStorage,
     private db: AngularFireDatabase,
   ) { }
