@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { Products, ProductsService } from 'src/app/services/products.service';
+import { Products, Categories, ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -16,7 +16,12 @@ export class CatalogoPage implements OnInit {
     spaceBetween: 20
   };
 
+  category: Categories = {
+    title: ''
+  }
+
   products: Products[]
+  categories: Categories[]
   filteredList: Products[]
 
   isItemAvailable = false;
@@ -29,8 +34,10 @@ export class CatalogoPage implements OnInit {
         this.products = res;
         console.log("resultado da lista", this.products)
         this.currentPage = 1
-      }); 
-      this.initializeDefaultList();
+      });
+    this.productsService.getAllCategories().subscribe(categories => {
+        this.categories = categories;
+    });
   }
 
   initializeDefaultList() {
