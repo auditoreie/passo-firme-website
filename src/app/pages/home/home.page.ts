@@ -18,6 +18,7 @@ export class HomePage implements OnInit {
   };
 
   promotionalProducts: Products[]
+  recentProducts: Products[]
   filteredList: Products[]
   products: Products[]
   categories: Categories[]
@@ -41,6 +42,11 @@ export class HomePage implements OnInit {
     this.productsService.getAllCategories().subscribe(res => {
       this.categories = res;
       console.log(res)
+    });
+
+    this.productsService.getRecentProducts().subscribe(res => {
+      this.recentProducts = res;
+      console.log('produtos adicionados recentemente', res)
     });
 
     this.initializeDefaultList();

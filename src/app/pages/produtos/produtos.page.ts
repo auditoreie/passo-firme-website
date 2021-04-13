@@ -21,6 +21,7 @@ export class ProdutosPage implements OnInit {
   products: Products[]
 
   product: Products = {
+    createdAt: new Date().getTime(),
     title: '',
     description: '',
     code: '',

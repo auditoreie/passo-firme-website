@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
  
 export interface Products {
   id?: string;
+  createdAt?: number;
   title: string;
   description: string;
   code: string;
@@ -27,16 +28,18 @@ export interface Categories {
 export class ProductsService {
   private productsCollection: AngularFirestoreCollection<Products>;
   private promotionalProductsCollection: AngularFirestoreCollection<Products>
+  private recentProductsCollection: AngularFirestoreCollection<Products>
   private categoriesCollection: AngularFirestoreCollection<Categories>
 
   private products: Observable<Products[]>;
   private promotionalProducts: Observable<Products[]>
+  private recentProducts: Observable<Products[]>
   private categories: Observable<Categories[]>
  
   constructor(db: AngularFirestore) {
     this.categoriesCollection = db.collection<Categories>('categories')
     this.productsCollection = db.collection<Products>('products')
-    this.promotionalProductsCollection = db.collection<Products>('products', ref => ref.where('isPromotional', '==', true));
+    this.recentProductsCollection = db.collection<Products>('products', ref => ref.orderBy('createdAt', 'desc'));
  
     this.products = this.productsCollection.snapshotChanges().pipe(
       map(actions => {
@@ -69,10 +72,20 @@ export class ProductsService {
         });
       })
     );
+
+    this.recentProducts = this.recentProductsCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
   }
  
   getAllProducts() {
-    return this.products;
+    return this.products
   }
 
   getAllCategories() {
@@ -80,7 +93,11 @@ export class ProductsService {
   }
 
   getPromotionalProducts() {
-    return this.promotionalProducts;
+    return this.promotionalProducts
+  }
+
+  getRecentProducts() {
+    return this.recentProducts
   }
 
   getCategory(id) {

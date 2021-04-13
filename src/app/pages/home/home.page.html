@@ -48,7 +48,7 @@
         <ion-icon name="chevron-back-circle" class="arrow-icons" color="secondary" (click)="prevProductSlide()"></ion-icon>
       </ion-col>
         <ion-slides [options]="slideOpts" class="product-slides" #productSlides>
-          <ion-slide *ngFor="let item of promotionalProducts" [routerLink]="['/product-details', item.id]">
+          <ion-slide *ngFor="let item of recentProducts" [routerLink]="['/product-details', item.id]">
             <ion-col>
               <ion-card class="product-card">
                 <img src="{{ item.image1 }}">
