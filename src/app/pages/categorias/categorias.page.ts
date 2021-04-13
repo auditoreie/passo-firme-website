@@ -16,6 +16,7 @@ export class CategoriasPage implements OnInit {
   categories: Categories[]
 
   category: Categories = {
+    createdAt: new Date().getTime(),
     title: ''
   }
 
