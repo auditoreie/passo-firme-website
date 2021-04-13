@@ -96,6 +96,10 @@ export class EditarProdutoPage implements OnInit {
     const file = this.selectedFilesForImage1.item(0)
     this.selectedFilesForImage1 = undefined
 
+    if (file.size > 1000000) {
+      return alert('Este arquivo é grande demais, por favor escolha outro arquivo menor')
+    } else {
+
     this.currentFileUploadForImage1 = new FileUpload(file)
     
       const filePath = `${this.basePath}/${this.currentFileUploadForImage1.file.name}`;
@@ -113,11 +117,16 @@ export class EditarProdutoPage implements OnInit {
           });
         })
       ).subscribe();
+    }
   }
 
   uploadImage2(): void {
     const file = this.selectedFilesForImage2.item(0)
     this.selectedFilesForImage2 = undefined
+
+    if (file.size > 1000000) {
+      return alert('Este arquivo é grande demais, por favor escolha outro arquivo menor')
+    } else {
 
     this.currentFileUploadForImage2 = new FileUpload(file)
     
@@ -136,11 +145,16 @@ export class EditarProdutoPage implements OnInit {
           });
         })
       ).subscribe();
+    }
   }
 
   uploadImage3(): void {
     const file = this.selectedFilesForImage3.item(0)
     this.selectedFilesForImage3 = undefined
+
+    if (file.size > 1000000) {
+      return alert('Este arquivo é grande demais, por favor escolha outro arquivo menor')
+    } else {
 
     this.currentFileUploadForImage3 = new FileUpload(file)
     
@@ -159,11 +173,16 @@ export class EditarProdutoPage implements OnInit {
           });
         })
       ).subscribe();
+    }
   }
 
   uploadImage4(): void {
     const file = this.selectedFilesForImage4.item(0)
     this.selectedFilesForImage4 = undefined
+
+    if (file.size > 1000000) {
+      return alert('Este arquivo é grande demais, por favor escolha outro arquivo menor')
+    } else {
 
     this.currentFileUploadForImage4 = new FileUpload(file)
     
@@ -182,6 +201,7 @@ export class EditarProdutoPage implements OnInit {
           });
         })
       ).subscribe();
+    }
   }
 
   private saveFileDataFromImage1(fileUpload: FileUpload): void {
