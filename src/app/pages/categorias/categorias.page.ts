@@ -120,6 +120,7 @@ export class CategoriasPage implements OnInit {
 
   cancelAction() {
     this.exibicaoAtual = "listagemCategorias"
+    this.category.title = ''
   }
 
   addCategory() {
@@ -129,6 +130,7 @@ export class CategoriasPage implements OnInit {
     }, err => {
       this.showToast('Houve algum problema ao adicionar essa categoria.');
     })
+    this.category.title = ''
   }
 
   deleteCategory(id) {
