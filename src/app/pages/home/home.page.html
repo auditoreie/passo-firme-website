@@ -47,7 +47,24 @@
       <ion-col class="arrow-back">
         <ion-icon name="chevron-back-circle" class="arrow-icons" color="secondary" (click)="prevProductSlide()"></ion-icon>
       </ion-col>
-        <ion-slides [options]="slideOpts" class="product-slides" #productSlides>
+      <ion-slides [options]="slideOpts" class="skeleton-slides" #productSlides *ngIf="!recentProducts">
+        <ion-slide>
+          <ion-col>
+            <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
+          </ion-col>
+        </ion-slide>
+        <ion-slide>
+          <ion-col>
+            <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
+          </ion-col>
+        </ion-slide>
+        <ion-slide>
+          <ion-col>
+            <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
+          </ion-col>
+        </ion-slide>
+      </ion-slides>
+        <ion-slides [options]="slideOpts" class="product-slides" #productSlides *ngIf="recentProducts">
           <ion-slide *ngFor="let item of recentProducts" [routerLink]="['/product-details', item.id]">
             <ion-col>
               <ion-card class="product-card">
@@ -73,7 +90,24 @@
       <ion-col class="arrow-back">
         <ion-icon name="chevron-back-circle" class="arrow-icons" color="secondary" (click)="prevPromoSlide()"></ion-icon>
       </ion-col>
-      <ion-slides [options]="slideOpts" class="product-slides" #promoSlides>
+      <ion-slides [options]="slideOpts" class="skeleton-slides" #productSlides *ngIf="!promotionalProducts">
+        <ion-slide>
+          <ion-col>
+            <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
+          </ion-col>
+        </ion-slide>
+        <ion-slide>
+          <ion-col>
+            <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
+          </ion-col>
+        </ion-slide>
+        <ion-slide>
+          <ion-col>
+            <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
+          </ion-col>
+        </ion-slide>
+      </ion-slides>
+      <ion-slides [options]="slideOpts" class="product-slides" #promoSlides *ngIf="promotionalProducts">
           <ion-slide *ngFor="let item of promotionalProducts" [routerLink]="['/product-details', item.id]">
             <ion-col>
               <ion-card class="product-card">
