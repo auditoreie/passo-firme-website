@@ -31,7 +31,7 @@ export class ProductsService {
   private recentProductsCollection: AngularFirestoreCollection<Products>
   private categoriesCollection: AngularFirestoreCollection<Categories>
 
-  private products: Observable<Products[]>;
+  private products: Observable<Products[]>
   private promotionalProducts: Observable<Products[]>
   private recentProducts: Observable<Products[]>
   private categories: Observable<Categories[]>
@@ -39,6 +39,7 @@ export class ProductsService {
   constructor(db: AngularFirestore) {
     this.categoriesCollection = db.collection<Categories>('categories')
     this.productsCollection = db.collection<Products>('products')
+    this.promotionalProductsCollection = db.collection<Products>('products', ref => ref.where('isPromotional', '==', true).orderBy('createdAt', 'desc'))
     this.recentProductsCollection = db.collection<Products>('products', ref => ref.orderBy('createdAt', 'desc'));
  
     this.products = this.productsCollection.snapshotChanges().pipe(
@@ -60,8 +61,6 @@ export class ProductsService {
         });
       })
     );
-
-    console.log(this.categories, this.categoriesCollection)
 
     this.promotionalProducts = this.promotionalProductsCollection.snapshotChanges().pipe(
       map(actions => {
@@ -117,6 +116,10 @@ export class ProductsService {
   deleteCategory(id: string): Promise<void> {
     return this.categoriesCollection.doc(id).delete();
   }
+
+  getProductByCategory(category: Categories, id: string) {
+    /* return this.categoriesCollection.doc(`categories/${category.id}/products`).valueChanges() */
+    /* return this.categoriesCollection.doc<Categories>(id).collection('products').valueChanges() */
   }
 
   addProductByCategory(category: Categories, db: AngularFirestore, products: Products) {
