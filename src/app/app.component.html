@@ -25,6 +25,15 @@
             </ion-item>
           </ion-menu-toggle>
 
+          <ion-footer class="list3">
+            <ion-menu-toggle auto-hide="false">
+              <ion-item routerDirection="root" [routerLink]="['/home']" lines="none" detail="false" routerLinkActive="selected">
+                <ion-icon slot="start" name="globe-outline"></ion-icon>
+                <ion-label class="label">Ver site</ion-label>
+              </ion-item>
+            </ion-menu-toggle>
+          </ion-footer>
+
         </ion-list>
       </ion-content>
     </ion-menu>
