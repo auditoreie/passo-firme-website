@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Products, ProductsService } from './../../services/products.service';
+import { Products, ProductsService, ClickCounter } from './../../services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController, MenuController } from '@ionic/angular';
 
@@ -21,8 +21,16 @@ export class ProductDetailsPage implements OnInit {
     image3: '',
     image4: '',
   };
+
+  click: ClickCounter = {
+    id: 'totalClicks',
+    upClick: +1,
+    clicks: 0
+  }
  
   productId = null;
+
+  totalClicks: ClickCounter[]
 
   constructor(private menu: MenuController, private productsService: ProductsService, private loadingController: LoadingController, private route: ActivatedRoute, private router: Router,) { }
 
@@ -44,8 +52,24 @@ export class ProductDetailsPage implements OnInit {
  
     this.productsService.getProduct(this.productId).subscribe(res => {
       this.product = res;
+      console.log(res)
+    });
+
+    this.productsService.getTotalClicks().subscribe(res => {
+      this.totalClicks = res;
       loading.dismiss();
       console.log(res)
     });
+  }
+
+  buyActionButton(item) {
+    const currentClickCount = item.clicks + this.click.upClick
+    console.log(currentClickCount)
+    const newClickCount = {
+      ...item,
+      clicks: currentClickCount 
+    }
+    this.productsService.upClick(newClickCount, item.id)
+    console.log('click', item.clicks)
   }
 }

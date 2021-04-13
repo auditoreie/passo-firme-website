@@ -21,6 +21,12 @@ export interface Categories {
   id?: string;
   title: string;
 }
+
+export interface ClickCounter {
+  id: string;
+  upClick: number;
+  clicks: number
+}
  
 @Injectable({
   providedIn: 'root'
@@ -30,17 +36,20 @@ export class ProductsService {
   private promotionalProductsCollection: AngularFirestoreCollection<Products>
   private recentProductsCollection: AngularFirestoreCollection<Products>
   private categoriesCollection: AngularFirestoreCollection<Categories>
+  private totalClicksCollection: AngularFirestoreCollection<ClickCounter>
 
   private products: Observable<Products[]>
   private promotionalProducts: Observable<Products[]>
   private recentProducts: Observable<Products[]>
   private categories: Observable<Categories[]>
+  private totalClicks: Observable<ClickCounter[]>
  
   constructor(db: AngularFirestore) {
     this.categoriesCollection = db.collection<Categories>('categories')
     this.productsCollection = db.collection<Products>('products')
     this.promotionalProductsCollection = db.collection<Products>('products', ref => ref.where('isPromotional', '==', true).orderBy('createdAt', 'desc'))
-    this.recentProductsCollection = db.collection<Products>('products', ref => ref.orderBy('createdAt', 'desc'));
+    this.recentProductsCollection = db.collection<Products>('products', ref => ref.orderBy('createdAt', 'desc'))
+    this.totalClicksCollection = db.collection<ClickCounter>('clicks')
  
     this.products = this.productsCollection.snapshotChanges().pipe(
       map(actions => {
@@ -81,6 +90,16 @@ export class ProductsService {
         });
       })
     );
+
+    this.totalClicks = this.totalClicksCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      })
+    );
   }
  
   getAllProducts() {
@@ -97,6 +116,16 @@ export class ProductsService {
 
   getRecentProducts() {
     return this.recentProducts
+  }
+
+  getTotalClicks() {
+    return this.totalClicks
+  }
+
+  upClick(click: ClickCounter, id: string) {
+    return this.totalClicksCollection.doc(id).update({
+      clicks: click.clicks
+    })
   }
 
   getCategory(id) {
