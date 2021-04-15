@@ -10,10 +10,17 @@ import { Products, Categories, ProductsService } from 'src/app/services/products
 export class HomePage implements OnInit {
 
   @ViewChild('productSlides') productSlides: IonSlides;
+  @ViewChild('productSlides2') productSlides2: IonSlides;
   @ViewChild('promoSlides') promoSlides: IonSlides;
+  @ViewChild('promoSlides2') promoSlides2: IonSlides;
 
   slideOpts = {
     slidesPerView: 3,
+    spaceBetween: 20
+  };
+
+  slideOpts2 = {
+    slidesPerView: 1,
     spaceBetween: 20
   };
 
@@ -79,15 +86,31 @@ export class HomePage implements OnInit {
     this.productSlides.slideNext();
   }
 
+  nextProductSlide2() {
+    this.productSlides2.slideNext();
+  }
+
   prevProductSlide() {
     this.productSlides.slidePrev();
+  }
+
+  prevProductSlide2() {
+    this.productSlides2.slidePrev();
   }
 
   nextPromoSlide() {
     this.promoSlides.slideNext();
   }
 
+  nextPromoSlide2() {
+    this.promoSlides2.slideNext();
+  }
+
   prevPromoSlide() {
     this.promoSlides.slidePrev();
+  }
+
+  prevPromoSlide2() {
+    this.promoSlides2.slidePrev();
   }
 }

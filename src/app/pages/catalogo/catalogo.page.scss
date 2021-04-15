@@ -1,14 +1,23 @@
+.toolbar {
+    height: 15vh;
+}
+
 .toolbar-grid {
     margin-top: 2.5vh;
 }
 
 .menu-items {
-    text-align: end;
     font-size: 20px;
     font-weight: 450;
+    padding-left: 3vw;
 }
 
-.menu-items:hover {
+.menu-col {
+    margin-top: 2vh;
+    margin-left: 40vw;
+}
+
+.hyperlink:hover {
     border-bottom: 2px solid rgb(255, 0, 0);
     transition: all 0.1s ease-out;
 }
@@ -18,8 +27,10 @@
 }
 
 .toolbar-logo {
-    width: 5vw;
-    height: 10vh;
+    width: auto;
+    max-width: 40%;
+    height: auto;
+    max-height: 40%;
 }
 
 .searchbar-grid {
@@ -51,9 +62,17 @@
     margin-top: 2vh;
 }
 
+.category-grid2 {
+    display: none;
+}
+
 .product-row {
     width: 70vw;
     margin-left: 5vw;
+}
+
+.product-row2 {
+    display: none;
 }
 
 .product-card {
@@ -116,6 +135,10 @@
     margin-left: 16vw;
 }
 
+.footer-subtitle2 {
+    display: none;
+}
+
 .footer-info {
     margin-left: 5vw;
     font-size: 16px;
@@ -130,6 +153,10 @@
 .footer-map {
     top: -25vh;
     left: 0vw;
+}
+
+.footer-map2 {
+    display: none;
 }
 
 .footer-copyright {
@@ -147,4 +174,93 @@
     outline: 0;
     outline-color: transparent;
     outline-style: none;
+}
+
+@media screen and (max-width: 768px) { 
+    .menu-col {
+        margin-top: 1vh;
+        margin-left: 0vw;
+    }
+
+    .toolbar-logo {
+        width: auto;
+        max-width: 60%;
+        height: auto;
+        max-height: 60%;
+    }
+
+    .divider-row {
+        margin-top: -5vh;
+    }
+
+    .searchbar-grid {
+        width: 90vw;
+    }
+
+    .category-grid {
+        display: none;
+    }
+
+    .category-grid2 {
+        display: flex;
+        background-color: #dadada;
+        width: 87vw;
+        margin-left: 4vw;
+        font-weight: 450;
+        margin-top: -6vh;
+    }
+
+    .product-row {
+        display: none;
+    }
+
+    .product-card {
+        width: 40vw;
+        height: 15vh;
+        border-radius: 8px;
+    }
+
+    .product-row2 {
+        display: flex;
+        width: 85vw;
+        margin-left: 4vw;
+    }
+
+    .footer-grid {
+        height: 70vh;
+    }
+
+    .footer-titles {
+        margin-top: 3vh;
+        margin-bottom: 2vh;
+    }
+    
+    .footer-title {
+        margin-left: 5vw;
+        white-space: nowrap;
+        font-size: 24px;
+    }
+
+    .footer-subtitle {
+        display: none;
+    }
+
+    .footer-subtitle2 {
+        display: flex;
+        margin-left: 5vw;
+        white-space: nowrap;
+        font-size: 24px;
+        margin-top: 2vh;
+    }
+
+    .footer-map {
+        display: none;
+    }
+
+    .footer-map2 {
+        display: flex;
+        top: 1vh;
+        left: 0vw;
+        margin-bottom: 4vh;
+    }
 }

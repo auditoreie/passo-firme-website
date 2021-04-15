@@ -5,6 +5,14 @@
     margin-left: 4vw;
 }
 
+.dashboard-grid {
+    display: flex;
+}
+
+.dashboard-grid2 {
+    display: none;
+}
+
 .card {
     margin-top: 7vh;
 }
@@ -16,9 +24,12 @@
     margin-top: 10vh;
 }
 
+.dashboard-card2 {
+    display: none;
+}
+
 .card-icon {
     text-align: center;
-
 }
 
 .icon {
@@ -39,4 +50,41 @@
     font-size: 40px;
     font-weight: bold;
     color: var(--ion-color-secondary);
+}
+
+@media screen and (max-width: 768px) { 
+    .dashboard-grid {
+        display: none;
+    }
+    
+    .dashboard-grid2 {
+        display: flex;
+    }
+
+    .dashboard-card {
+        display: none;
+    }
+
+    .dashboard-card2 {
+        display: flex;
+        width: 90vw;
+        height: 25vh;
+        left: 0vw;
+        margin-top: 4vh;
+    }
+
+    .card-icon {
+        text-align: center;
+        margin-top: -5vh;
+    }
+
+    .card-title {
+        text-align: center;
+        font-weight: bold;
+        max-inline-size: 20vw;
+        font-size: 25px;
+        left: 15vw;
+        max-inline-size: 60vw;
+        margin-top: -2vh;
+    }
 }

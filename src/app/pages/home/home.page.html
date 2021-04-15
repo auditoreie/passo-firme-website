@@ -1,30 +1,28 @@
 <ion-content>
-  <ion-toolbar>
+  <ion-toolbar class="toolbar">
     <ion-grid class="toolbar-grid">
       <ion-row>
         <ion-col>
           <img class="toolbar-logo" src="../.././../assets/icon/favicon.png">
         </ion-col>
-        <ion-col size="0.8">
+        <ion-col class="menu-col">
           <ion-label class="menu-items" color="primary">
             <a class="hyperlink" href="/">Home</a>
           </ion-label>
-        </ion-col>
-        <ion-col size="1">
           <ion-label class="menu-items" color="primary">
             <a class="hyperlink" href="/catalogo">Catálogo</a>
           </ion-label>
-        </ion-col>
-        <ion-col size="1">
           <ion-label class="menu-items" color="primary">
             <a class="hyperlink" href="/home#contato">Contato</a>
           </ion-label>
         </ion-col>
       </ion-row>
-      <ion-item-divider></ion-item-divider>
     </ion-grid>
   </ion-toolbar>
 
+<!--   <ion-row class="divider-row">
+    <ion-item-divider></ion-item-divider>
+  </ion-row> -->
 
   <ion-grid class="searchbar-grid">
     <ion-col>
@@ -74,9 +72,32 @@
             </ion-col>
           </ion-slide>     
         </ion-slides>
-      <ion-col class="arrow-forward">
-        <ion-icon name="chevron-forward-circle" class="arrow-icons" color="secondary" (click)="nextProductSlide()"></ion-icon>
-      </ion-col>
+        <ion-col class="arrow-forward">
+          <ion-icon name="chevron-forward-circle" class="arrow-icons" color="secondary" (click)="nextProductSlide()"></ion-icon>
+        </ion-col>
+        <ion-col class="arrow-back2">
+          <ion-icon name="chevron-back-circle" class="arrow-icons" color="secondary" (click)="prevProductSlide2()"></ion-icon>
+        </ion-col>
+        <ion-slides [options]="slideOpts" class="skeleton-slides2" #productSlides2 *ngIf="!recentProducts">
+          <ion-slide>
+            <ion-col>
+              <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
+            </ion-col>
+          </ion-slide>
+        </ion-slides>
+        <ion-slides [options]="slideOpts2" class="product-slides2" #productSlides2 *ngIf="recentProducts">
+          <ion-slide *ngFor="let item of recentProducts" [routerLink]="['/product-details', item.id]">
+            <ion-col>
+              <ion-card class="product-card">
+                <img src="{{ item.image1 }}">
+              </ion-card>
+                <ion-title class="product-title">{{ item.title }}</ion-title> 
+            </ion-col>
+          </ion-slide>     
+        </ion-slides>
+        <ion-col class="arrow-forward2">
+          <ion-icon name="chevron-forward-circle" class="arrow-icons" color="secondary" (click)="nextProductSlide2()"></ion-icon>
+        </ion-col>
     </ion-row>
   </ion-grid>
 
@@ -120,6 +141,30 @@
       <ion-col class="arrow-forward">
         <ion-icon name="chevron-forward-circle" class="arrow-icons" color="secondary" (click)="nextPromoSlide()"></ion-icon>
       </ion-col>
+      
+      <ion-col class="arrow-back2">
+        <ion-icon name="chevron-back-circle" class="arrow-icons" color="secondary" (click)="prevPromoSlide2()"></ion-icon>
+      </ion-col>
+      <ion-slides [options]="slideOpts" class="skeleton-slides2" #productSlides2 *ngIf="!promotionalProducts">
+        <ion-slide>
+          <ion-col>
+            <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
+          </ion-col>
+        </ion-slide>
+      </ion-slides>
+      <ion-slides [options]="slideOpts2" class="product-slides2" #promoSlides2 *ngIf="promotionalProducts">
+        <ion-slide *ngFor="let item of promotionalProducts" [routerLink]="['/product-details', item.id]">
+          <ion-col>
+            <ion-card class="product-card">
+              <img src="{{ item.image1 }}">
+            </ion-card>
+              <ion-title class="product-title">{{ item.title }}</ion-title> 
+          </ion-col>
+        </ion-slide>
+    </ion-slides>
+    <ion-col class="arrow-forward2">
+      <ion-icon name="chevron-forward-circle" class="arrow-icons" color="secondary" (click)="nextPromoSlide2()"></ion-icon>
+    </ion-col>
     </ion-row>
   </ion-grid>
 
@@ -173,6 +218,14 @@
         </ion-col>
         <ion-col class="footer-map">
           <iframe width="500" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=Rua%20das%20Gaivotas%20n%2022,%20Venda%20Nova&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label class="footer-subtitle2">Como chegar</ion-label>
+        </ion-col>
+        <ion-col class="footer-map2">
+          <iframe width="500" height="150" id="gmap_canvas" src="https://maps.google.com/maps?q=Rua%20das%20Gaivotas%20n%2022,%20Venda%20Nova&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
         </ion-col>
       </ion-row>
       <ion-row>

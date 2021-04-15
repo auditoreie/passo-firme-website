@@ -1,29 +1,28 @@
 <ion-content>
-  <ion-toolbar>
+  <ion-toolbar class="toolbar">
     <ion-grid class="toolbar-grid">
       <ion-row>
         <ion-col>
           <img class="toolbar-logo" src="../.././../assets/icon/favicon.png">
         </ion-col>
-        <ion-col size="0.8">
+        <ion-col class="menu-col">
           <ion-label class="menu-items" color="primary">
             <a class="hyperlink" href="/">Home</a>
           </ion-label>
-        </ion-col>
-        <ion-col size="1">
           <ion-label class="menu-items" color="primary">
             <a class="hyperlink" href="/catalogo">Catálogo</a>
           </ion-label>
-        </ion-col>
-        <ion-col size="1">
           <ion-label class="menu-items" color="primary">
             <a class="hyperlink" href="/home#contato">Contato</a>
           </ion-label>
         </ion-col>
       </ion-row>
-      <ion-item-divider></ion-item-divider>
     </ion-grid>
   </ion-toolbar>
+
+<!--   <ion-row class="divider-row">
+    <ion-item-divider></ion-item-divider>
+  </ion-row> -->
 
   <ion-grid class="product-grid">
     <ion-row>
@@ -82,6 +81,65 @@
     </ion-row>
   </ion-grid>
 
+  <ion-grid class="product-grid2">
+    <ion-row>
+      <ion-col>
+        <ion-card class="product-card2">
+          <img class="product-img" src="{{ product.image1 }}">
+        </ion-card>
+      </ion-col>
+      <ion-row class="infos-row">
+        <ion-col class="product-labels">
+          <ion-row>
+            <ion-col class="product-row">
+              <ion-label class="product-title">{{ product.title }}</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label>Código: {{ product.code }}</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="product-row">
+              <ion-label>Tamanhos disponíveis: {{ product.availableSizes }}</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="product-row">
+              <ion-label>{{ product.description }}</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col *ngFor="let item of totalClicks">
+              <ion-button class="product-button2" color="secondary" href="http://wa.me/5531999999999?text=Olá, tenho interesse em {{ product.title }}" target="_blank" (click)="buyActionButton(item)">Comprar Agora</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="card-grid2">
+    <ion-row>
+      <ion-col>
+        <ion-card class="card-img2">
+          <img class="product-img" src="{{ product.image2 }}">
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="card-img2">
+          <img class="product-img" src="{{ product.image3 }}">
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="card-img2">
+          <img class="product-img" src="{{ product.image4 }}">
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
   <section id="contato">
     <ion-grid class="footer-grid">
       <ion-row class="footer-titles">
@@ -124,6 +182,14 @@
         </ion-col>
         <ion-col class="footer-map">
           <iframe width="500" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=Rua%20das%20Gaivotas%20n%2022,%20Venda%20Nova&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-label class="footer-subtitle2">Como chegar</ion-label>
+        </ion-col>
+        <ion-col class="footer-map2">
+          <iframe width="500" height="150" id="gmap_canvas" src="https://maps.google.com/maps?q=Rua%20das%20Gaivotas%20n%2022,%20Venda%20Nova&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
         </ion-col>
       </ion-row>
       <ion-row>

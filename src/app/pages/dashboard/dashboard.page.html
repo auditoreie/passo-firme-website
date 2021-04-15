@@ -5,7 +5,7 @@
     </ion-col>
   </ion-row>
 
-  <ion-grid>
+  <ion-grid class="dashboard-grid">
     <ion-row>
       <ion-col>
         <ion-card class="dashboard-card">
@@ -72,6 +72,95 @@
       </ion-col>
       <ion-col>
         <ion-card class="dashboard-card">
+          <ion-grid class="card">
+            <ion-row>
+              <ion-col class="card-icon">
+                <ion-icon name="cart" color="primary" class="icon"></ion-icon>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="card-title">
+                <ion-label>Total de cliques no botão de compra:</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="card-info" *ngFor="let item of totalClicks">
+                <ion-label>{{ item.clicks }}</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid class="dashboard-grid2">
+    <ion-row>
+      <ion-col>
+        <ion-card class="dashboard-card2">
+          <ion-grid class="card">
+            <ion-row>
+              <ion-col class="card-icon">
+                <ion-icon name="stats-chart" color="primary" class="icon"></ion-icon>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="card-title">
+                <ion-label>Total de produtos cadastrados:</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="card-info">
+                <ion-label>{{ totalProductsItems }}</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="dashboard-card2">
+          <ion-grid class="card">
+            <ion-row>
+              <ion-col class="card-icon">
+                <ion-icon name="pricetags" color="primary" class="icon"></ion-icon>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="card-title">
+                <ion-label>Total de categorias cadastradas:</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="card-info">
+                <ion-label>{{ totalCategoriesItems }}</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="dashboard-card2">
+          <ion-grid class="card">
+            <ion-row>
+              <ion-col class="card-icon">
+                <ion-icon name="ticket" color="primary" class="icon"></ion-icon>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="card-title">
+                <ion-label>Total de produtos em promoção:</ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="card-info">
+                <ion-label>{{ totalPromotionalProductsItems }}</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class="dashboard-card2">
           <ion-grid class="card">
             <ion-row>
               <ion-col class="card-icon">

@@ -62,3 +62,15 @@
     outline-color: transparent;
     outline-style: none;
 }
+
+@media screen and (max-width: 768px) { 
+    .cancel-button {
+        width: 35vw;
+        height: 7vh;
+    }
+
+    .save-button {
+        width: 35vw;
+        height: 7vh;
+    }
+}

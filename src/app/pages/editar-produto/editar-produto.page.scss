@@ -119,3 +119,37 @@
     width: 26vw;
     height: 9vh;
 }
+
+@media screen and (max-width: 768px) { 
+    .checkbox-col {
+        top: 1vh;
+    }
+
+    .destaq-button {
+        width: 90vw;
+    }
+
+    .images-button-row {
+        margin-left: 0vw;
+        margin-top: 3vh;
+    }
+
+    .images-button {
+        text-transform: none;
+        font-weight: 450;
+        font-size: 12px;
+        max-inline-size: 30vw;
+        width: 70vw;
+        height: 9vh;
+    }
+
+    .cancel-button {
+        width: 35vw;
+        height: 7vh;
+    }
+
+    .save-button {
+        width: 35vw;
+        height: 7vh;
+    }
+}
