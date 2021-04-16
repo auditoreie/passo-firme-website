@@ -49,7 +49,7 @@ export class ProductsService {
     this.categoriesCollection = db.collection<Categories>('categories', ref => ref.orderBy('createdAt', 'desc'))
     this.productsCollection = db.collection<Products>('products', ref => ref.orderBy('createdAt', 'desc'))
     this.promotionalProductsCollection = db.collection<Products>('products', ref => ref.where('isPromotional', '==', true).orderBy('createdAt', 'desc'))
-    this.recentProductsCollection = db.collection<Products>('products', ref => ref.orderBy('createdAt', 'desc'))
+    this.recentProductsCollection = db.collection<Products>('products', ref => ref.orderBy('createdAt', 'desc').limit(9))
     this.totalClicksCollection = db.collection<ClickCounter>('clicks')
  
     this.products = this.productsCollection.snapshotChanges().pipe(
