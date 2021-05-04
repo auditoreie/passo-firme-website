@@ -5,6 +5,10 @@
     margin-left: 4vw;
 }
 
+.menu-button {
+    display: none;
+}
+
 .dashboard-grid {
     display: flex;
 }
@@ -52,7 +56,13 @@
     color: var(--ion-color-secondary);
 }
 
-@media screen and (max-width: 768px) { 
+@media screen and (max-width: 768px) {
+    .menu-button {
+        display: flex;
+        margin-top: -2vh;
+        margin-bottom: 3vh;
+    }
+
     .dashboard-grid {
         display: none;
     }

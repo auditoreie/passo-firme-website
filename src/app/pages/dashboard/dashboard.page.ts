@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, MenuController } from '@ionic/angular';
 import { Categories, Products, ClickCounter, ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class DashboardPage implements OnInit {
     clicks: 0
   }
 
-  constructor(private productsService: ProductsService, private loadingController: LoadingController,) { }
+  constructor(private productsService: ProductsService, private loadingController: LoadingController, private menu: MenuController) { }
 
   async ngOnInit() {
     const loading = await this.loadingController.create({
@@ -58,5 +58,9 @@ export class DashboardPage implements OnInit {
       loading.dismiss();
       console.log(res)
     });
+  }
+
+  openMenu() {
+    this.menu.open()
   }
 }

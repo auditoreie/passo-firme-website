@@ -5,6 +5,10 @@
     margin-left: 4vw;
 }
 
+.menu-button {
+    display: none;
+}
+
 .add-button-grid {
     left: 19vw;
 }
@@ -142,9 +146,29 @@
 }
 
 @media screen and (max-width: 768px) { 
+    .menu-button {
+        display: flex;
+        margin-top: -2vh;
+        margin-bottom: 3vh;
+    }
+
+     .add-button-grid {
+        margin-top: 3vh;
+    }
+
     .add-button {
+        height: 7vh;
         width: 35vw;
         margin-left: -15vw;
+    }
+
+    .grid {
+        width: 85vw;
+    }
+
+    .icons {
+        width: 6vw;
+        height: 6vh;
     }
 
     .icon-col {
