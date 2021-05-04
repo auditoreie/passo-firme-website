@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoadingController, MenuController, ToastController } from '@ionic/angular';
 import { Categories, ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class CategoriasPage implements OnInit {
     title: ''
   }
 
-  constructor(private productsService: ProductsService, private loadingController: LoadingController, private toastCtrl: ToastController,) { }
+  constructor(private productsService: ProductsService, private loadingController: LoadingController, private toastCtrl: ToastController, private menu: MenuController) { }
 
   ngOnInit() {
     this.loadData()
@@ -151,5 +151,9 @@ export class CategoriasPage implements OnInit {
       message: msg,
       duration: 2000
     }).then(toast => toast.present())
+  }
+
+  openMenu() {
+    this.menu.open()
   }
 }
