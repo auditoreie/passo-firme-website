@@ -1,0 +1,24 @@
+.searchbar-input.sc-ion-searchbar-ios {
+    background: none;
+}
+  
+.searchbar-grid {
+    width: 60vw;
+    margin-top: 3vh;
+    margin-bottom: 7vh;
+}
+  
+.searchbar {
+    --box-shadow: none;
+    --icon-color: rgb(139, 139, 139);
+    border-color: #b9b9b9;
+    border-width: 0.5px;
+    border-style: solid;
+    border-radius: 0.5rem;
+}
+
+@media screen and (max-width: 650px) {
+    .searchbar-grid {
+        width: 90vw;
+    }
+}

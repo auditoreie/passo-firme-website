@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuController, IonSlides } from '@ionic/angular';
 import { Product, Category, ProductsService } from 'src/app/services/products.service';
-import { removeAccents } from '../../helpers/accentsHelper';
-import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'app-home',
@@ -81,28 +79,6 @@ export class HomePage implements OnInit {
     this.productsService.getAllCategories().subscribe(res => {
       this.categories = res;
     });
-  }
-
-  filterList(event: any): any {
-    // Valor da barra de pesquisa
-    const rawSearchTerm = event.target.value as string
-
-    // Se o valor for igual a uma string vazia, os itens não são filtrados
-    if (!rawSearchTerm || rawSearchTerm.trim() === '') {
-      this.isItemAvailable = false;
-      return this.filteredList = this.products
-    }
-
-    const normalizedSearchTerm = removeAccents(rawSearchTerm.toLowerCase())
-    this.isItemAvailable = true;
-    this.filteredList = this.products.filter((item) => {
-      const normalizedTitle = removeAccents(item.title.toLowerCase())
-      return (normalizedTitle.indexOf(normalizedSearchTerm) > -1);
-    })
-  }
-
-  openWhatsapp(): WindowProxy {
-    return this.contactService.openWhatsappContact()
   }
 
   nextProductSlide() {

@@ -27,7 +27,6 @@ export class CatalogoPage implements OnInit {
   categories: Category[]
   filteredList: Product[]
 
-  isItemAvailable = false;
   isCategorySeeOptionEnable = false;
 
   constructor(private menu: MenuController, private productsService: ProductsService) { }
@@ -73,22 +72,6 @@ export class CatalogoPage implements OnInit {
     // this.isCategorySeeOptionEnable = true
     this.activeCategory = category
     this.filterProductsByCategory(category.title)
-  }
-
-  filterList(event: any) {
-    // Valor da barra de pesquisa
-    const searchTerm = event.target.value;
-
-    // Se o valor for igual a uma string vazia, os itens não são filtrados
-    if (searchTerm && searchTerm.trim() !== '') {
-        this.isItemAvailable = true
-        this.filteredList = this.products.filter((item) => {
-            return (item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1)
-        })
-    } else {
-        this.isItemAvailable = false
-        return this.filteredList = this.products
-    }
   }
 
   pageItems() {

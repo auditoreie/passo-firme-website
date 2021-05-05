@@ -1,12 +1,7 @@
 <ion-content>
   <app-navbar></app-navbar>
 
-
-  <ion-grid class="searchbar-grid">
-    <ion-col>
-      <ion-searchbar class="searchbar" showCancelButton="focus" type="text" debounce="50" (ionChange)="filterList($event)" placeholder="Busque em nosso catálogo de produtos"></ion-searchbar>
-    </ion-col>
-  </ion-grid>
+  <app-searchbar></app-searchbar>
 
   <div *ngIf="currentPage === 0">
     <ion-grid class="error-label">

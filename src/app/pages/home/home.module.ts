@@ -10,6 +10,8 @@ import { HomePage } from './home.page';
 
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { FooterComponent } from 'src/app/components/footer/footer.component';
+import { SearchbarComponent } from 'src/app/components/searchbar/searchbar.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -17,6 +19,6 @@ import { FooterComponent } from 'src/app/components/footer/footer.component';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, NavbarComponent, FooterComponent, SearchbarComponent]
 })
 export class HomePageModule {}

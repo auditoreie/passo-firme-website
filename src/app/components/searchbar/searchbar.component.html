@@ -1,0 +1,10 @@
+<ion-grid class="searchbar-grid">
+  <ion-col>
+    <ion-searchbar class="searchbar" showCancelButton="focus" type="text" debounce="50" (ionChange)="filterList($event)" placeholder="Busque em nosso catálogo de produtos"></ion-searchbar>
+  </ion-col>
+  <ion-col>
+    <ion-list *ngIf="isItemAvailable">
+      <ion-item *ngFor="let item of filteredList" [routerLink]="['/product-details', item.id]">{{ item.title }}</ion-item>
+  </ion-list>
+  </ion-col>
+</ion-grid>
