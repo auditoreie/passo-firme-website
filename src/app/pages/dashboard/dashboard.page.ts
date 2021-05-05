@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, MenuController } from '@ionic/angular';
-import { Categories, Products, ClickCounter, ProductsService } from 'src/app/services/products.service';
+import { Category, Product, ClickCounter, ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,9 +9,9 @@ import { Categories, Products, ClickCounter, ProductsService } from 'src/app/ser
 })
 export class DashboardPage implements OnInit {
 
-  products: Products[]
-  promotionalProducts: Products[]
-  categories: Categories[]
+  products: Product[]
+  promotionalProducts: Product[]
+  categories: Category[]
   totalClicks: ClickCounter[]
 
   totalProductsItems: number

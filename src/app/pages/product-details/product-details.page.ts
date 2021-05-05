@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Products, ProductsService, ClickCounter } from './../../services/products.service';
+import { Product, ProductsService, ClickCounter } from './../../services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController, MenuController } from '@ionic/angular';
 
@@ -10,7 +10,7 @@ import { LoadingController, MenuController } from '@ionic/angular';
 })
 export class ProductDetailsPage implements OnInit {
 
-  product: Products = {
+  product: Product = {
     title: '',
     description: '',
     code: '',
@@ -27,7 +27,7 @@ export class ProductDetailsPage implements OnInit {
     upClick: +1,
     clicks: 0
   }
- 
+
   productId = null;
 
   totalClicks: ClickCounter[]
@@ -41,7 +41,7 @@ export class ProductDetailsPage implements OnInit {
       this.loadData();
     }
   }
- 
+
   async loadData() {
     const loading = await this.loadingController.create({
       spinner: 'crescent',
@@ -49,7 +49,7 @@ export class ProductDetailsPage implements OnInit {
       message: 'Carregando..'
     });
     await loading.present();
- 
+
     this.productsService.getProduct(this.productId).subscribe(res => {
       this.product = res;
       console.log(res)
@@ -67,7 +67,7 @@ export class ProductDetailsPage implements OnInit {
     console.log(currentClickCount)
     const newClickCount = {
       ...item,
-      clicks: currentClickCount 
+      clicks: currentClickCount
     }
     this.productsService.upClick(newClickCount, item.id)
     console.log('click', item.clicks)

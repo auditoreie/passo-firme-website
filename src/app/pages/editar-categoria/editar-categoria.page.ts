@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Categories, ProductsService } from './../../services/products.service';
+import { Category, ProductsService } from './../../services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
 
@@ -10,19 +10,19 @@ import { LoadingController, ToastController } from '@ionic/angular';
 })
 export class EditarCategoriaPage implements OnInit {
 
-  categories: Categories[]
+  categories: Category[]
 
-  category: Categories = {
+  category: Category = {
     title: ''
   }
 
   categoryId = null;
 
   constructor(
-    private productsService: ProductsService, 
+    private productsService: ProductsService,
     private loadingController: LoadingController,
-    private route: ActivatedRoute,  
-    private router: Router, 
+    private route: ActivatedRoute,
+    private router: Router,
     private toastCtrl: ToastController
   ) { }
 

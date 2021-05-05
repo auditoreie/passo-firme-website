@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, MenuController, ToastController } from '@ionic/angular';
-import { Categories, ProductsService } from 'src/app/services/products.service';
+import { Category, ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-categorias',
@@ -13,9 +13,9 @@ export class CategoriasPage implements OnInit {
 
   exibicaoAtual = "listagemCategorias"
 
-  categories: Categories[]
+  categories: Category[]
 
-  category: Categories = {
+  category: Category = {
     createdAt: new Date().getTime(),
     title: ''
   }
@@ -37,7 +37,7 @@ export class CategoriasPage implements OnInit {
       message: 'Carregando..'
     });
     await loading.present();
- 
+
     this.productsService.getAllCategories().subscribe(res => {
       this.categories = res;
       this.currentPage = 1
@@ -63,7 +63,7 @@ export class CategoriasPage implements OnInit {
     const MAX_ITEMS_PER_PAGE = 9
     if (this.currentPage > 0) {
       const totalPages = Math.ceil(this.categories.length / MAX_ITEMS_PER_PAGE)
-      return this.generatePagesArrayByAmount(totalPages) 
+      return this.generatePagesArrayByAmount(totalPages)
     }
   }
 
@@ -95,15 +95,15 @@ export class CategoriasPage implements OnInit {
   parsedResult() {
     if (this.currentPage > 0) {
       const pageNumbers = this.listAvailablePages(this.categories)
-      const result = this.parsePageNumbers(pageNumbers, this.currentPage) 
-      return [ ...result] 
+      const result = this.parsePageNumbers(pageNumbers, this.currentPage)
+      return [ ...result]
     }
   }
 
   lastResultItem() {
     return this.parsedResult().length
   }
-   
+
   nextPage() {
     this.currentPage++
     console.log(this.currentPage)
@@ -136,7 +136,7 @@ export class CategoriasPage implements OnInit {
 
   deleteCategory(id) {
     console.log(id)
-    if (window.confirm('Você tem certeza que quer deletar essa categoria?')) { 
+    if (window.confirm('Você tem certeza que quer deletar essa categoria?')) {
     this.productsService.deleteCategory(id).then(() => {
       console.log(id)
       this.showToast('Categoria deletada com sucesso!')

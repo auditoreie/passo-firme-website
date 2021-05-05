@@ -4,7 +4,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { LoadingController, MenuController, ToastController } from '@ionic/angular';
 import { finalize } from 'rxjs/operators';
-import { Products, ProductsService } from 'src/app/services/products.service';
+import { Product, ProductsService } from 'src/app/services/products.service';
 import { FileUpload } from '../_models/fileUpload';
 
 @Component({
@@ -18,9 +18,9 @@ export class ProdutosPage implements OnInit {
 
   exibicaoAtual = "listagemProdutos"
 
-  products: Products[]
+  products: Product[]
 
-  product: Products = {
+  product: Product = {
     createdAt: new Date().getTime(),
     title: '',
     description: '',
@@ -49,7 +49,7 @@ export class ProdutosPage implements OnInit {
 
   constructor(private productsService: ProductsService,
     private loadingController: LoadingController,
-    private router: Router, 
+    private router: Router,
     private toastCtrl: ToastController,
     private storage: AngularFireStorage,
     private db: AngularFireDatabase,
@@ -88,11 +88,11 @@ export class ProdutosPage implements OnInit {
     } else {
 
     this.currentFileUploadForImage1 = new FileUpload(file)
-    
+
       const filePath = `${this.basePath}/${this.currentFileUploadForImage1.file.name}`;
       const storageRef = this.storage.ref(filePath);
       const uploadTask = this.storage.upload(filePath, this.currentFileUploadForImage1.file);
-  
+
       uploadTask.snapshotChanges().pipe(
         finalize(() => {
           storageRef.getDownloadURL().subscribe(downloadURL => {
@@ -116,11 +116,11 @@ export class ProdutosPage implements OnInit {
     } else {
 
     this.currentFileUploadForImage2 = new FileUpload(file)
-    
+
       const filePath = `${this.basePath}/${this.currentFileUploadForImage2.file.name}`;
       const storageRef = this.storage.ref(filePath);
       const uploadTask = this.storage.upload(filePath, this.currentFileUploadForImage2.file);
-  
+
       uploadTask.snapshotChanges().pipe(
         finalize(() => {
           storageRef.getDownloadURL().subscribe(downloadURL => {
@@ -144,11 +144,11 @@ export class ProdutosPage implements OnInit {
     } else {
 
     this.currentFileUploadForImage3 = new FileUpload(file)
-    
+
       const filePath = `${this.basePath}/${this.currentFileUploadForImage3.file.name}`;
       const storageRef = this.storage.ref(filePath);
       const uploadTask = this.storage.upload(filePath, this.currentFileUploadForImage3.file);
-  
+
       uploadTask.snapshotChanges().pipe(
         finalize(() => {
           storageRef.getDownloadURL().subscribe(downloadURL => {
@@ -172,11 +172,11 @@ export class ProdutosPage implements OnInit {
     } else {
 
     this.currentFileUploadForImage4 = new FileUpload(file)
-    
+
       const filePath = `${this.basePath}/${this.currentFileUploadForImage4.file.name}`;
       const storageRef = this.storage.ref(filePath);
       const uploadTask = this.storage.upload(filePath, this.currentFileUploadForImage4.file);
-  
+
       uploadTask.snapshotChanges().pipe(
         finalize(() => {
           storageRef.getDownloadURL().subscribe(downloadURL => {
@@ -222,7 +222,7 @@ export class ProdutosPage implements OnInit {
       message: 'Carregando..'
     });
     await loading.present();
- 
+
     this.productsService.getAllProducts().subscribe(res => {
       this.products = res;
       this.currentPage = 1
@@ -248,7 +248,7 @@ export class ProdutosPage implements OnInit {
     const MAX_ITEMS_PER_PAGE = 9
     if (this.currentPage > 0) {
       const totalPages = Math.ceil(this.products.length / MAX_ITEMS_PER_PAGE)
-      return this.generatePagesArrayByAmount(totalPages) 
+      return this.generatePagesArrayByAmount(totalPages)
     }
   }
 
@@ -280,15 +280,15 @@ export class ProdutosPage implements OnInit {
   parsedResult() {
     if (this.currentPage > 0) {
       const pageNumbers = this.listAvailablePages(this.products)
-      const result = this.parsePageNumbers(pageNumbers, this.currentPage) 
-      return [ ...result] 
+      const result = this.parsePageNumbers(pageNumbers, this.currentPage)
+      return [ ...result]
     }
   }
 
   lastResultItem() {
     return this.parsedResult().length
   }
-   
+
   nextPage() {
     this.currentPage++
     console.log(this.currentPage)
@@ -317,9 +317,9 @@ export class ProdutosPage implements OnInit {
     this.product.image3 = '../../../assets/default-img.jpg'
     this.product.image4 = '../../../assets/default-img.jpg'
     this.percentageForImage1 = 0
-    this.percentageForImage2 = 0  
-    this.percentageForImage3 = 0  
-    this.percentageForImage4 = 0  
+    this.percentageForImage2 = 0
+    this.percentageForImage3 = 0
+    this.percentageForImage4 = 0
   }
 
   addProduct() {
@@ -340,13 +340,13 @@ export class ProdutosPage implements OnInit {
     this.product.image3 = '../../../assets/default-img.jpg'
     this.product.image4 = '../../../assets/default-img.jpg'
     this.percentageForImage1 = 0
-    this.percentageForImage2 = 0  
-    this.percentageForImage3 = 0  
-    this.percentageForImage4 = 0     
+    this.percentageForImage2 = 0
+    this.percentageForImage3 = 0
+    this.percentageForImage4 = 0
   }
 
   deleteProduct(id) {
-    if (window.confirm('Você tem certeza que quer deletar esse produto?')) { 
+    if (window.confirm('Você tem certeza que quer deletar esse produto?')) {
     this.productsService.deleteProduct(id).then(() => {
       console.log(id)
       this.showToast('Produto deletado com sucesso!')
