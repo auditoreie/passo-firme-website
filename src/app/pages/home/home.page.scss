@@ -1,17 +1,19 @@
-.toolbar {
-    height: 15vh;
+.promo-grid {
+    margin-top: 7vh;
 }
 
-.toolbar-grid {
-    margin-top: 2.5vh;
+.arrow-col1 {
+    top: 8vh;
+    left: 3vw;
 }
 
+.arrow-col2 {
     top: 8vh;
 }
 
 .arrow-icons {
-    width: 100%;
-    height: 100%;
+    width: 60%;
+    height: 60%;
     margin-top: 1vh;
     z-index: 999;
 }
@@ -24,7 +26,11 @@
     width: 100%;
     height: 40vh;
     max-height: 60vh;
-    border-radius: 8px;
+    border-radius: 0.5rem;
+}
+
+.border-card {
+    border-radius: 0.5rem;
 }
 
 .catalog-button {
@@ -41,63 +47,18 @@
 }
 
 @media screen and (max-width: 768px) {
-    .menu-col {
-        margin-top: 1vh;
-        margin-left: 0vw;
+    .arrow-icons {
+        width: 100%;
+        height: 100%;
     }
 
-    .toolbar-logo {
-        width: auto;
-        max-width: 100%;
-        height: auto;
-        max-height: 100%;
-    }
-
-    .divider-row {
-        margin-top: -5vh;
-    }
-
-    .searchbar-grid {
-        width: 90vw;
-    }
-
-    .product-card {
-        width: 60vw;
-        height: 20vh;
-        border-radius: 8px;
-    }
-
-    //Mobile section
-    .arrow-back {
-        display: none;
-    }
-
-    .arrow-forward {
-        display: none;
-    }
-
-    .arrow-back2 {
-        display: flex;
-        top: 18vh;
-        left: 8vw;
-    }
-
-    .arrow-forward2 {
-        display: flex;
-        top: 18vh;
-        left: -2vw;
-    }
-
-    .skeleton-slides {
-        display: none;
-    }
-
-    .skeleton-slides2 {
-        display: flex;
-        width: 70vw;
+    .arrow-col1 {
+        top: 0vh;
         left: 1vw;
     }
-
+    
+    .arrow-col2 {
+        top: 0vh;
         left: -1vw;
     }
 }
