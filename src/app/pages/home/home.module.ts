@@ -8,6 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 
+import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 @NgModule({
   imports: [
     CommonModule,

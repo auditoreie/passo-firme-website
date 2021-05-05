@@ -8,6 +8,7 @@ import { CatalogoPageRoutingModule } from './catalogo-routing.module';
 
 import { CatalogoPage } from './catalogo.page';
 
+import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 @NgModule({
   imports: [
     CommonModule,

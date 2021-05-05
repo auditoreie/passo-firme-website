@@ -8,6 +8,7 @@ import { ProductDetailsPageRoutingModule } from './product-details-routing.modul
 
 import { ProductDetailsPage } from './product-details.page';
 
+import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 @NgModule({
   imports: [
     CommonModule,
