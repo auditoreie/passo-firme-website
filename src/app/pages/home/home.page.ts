@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuController, IonSlides } from '@ionic/angular';
 import { Product, Category, ProductsService } from 'src/app/services/products.service';
 import { removeAccents } from '../../helpers/accentsHelper';
+import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'app-home',
@@ -100,31 +101,24 @@ export class HomePage implements OnInit {
     })
   }
 
-  nextProductSlide2() {
-    this.productSlides2.slideNext();
+  openWhatsapp(): WindowProxy {
+    return this.contactService.openWhatsappContact()
+  }
+
+  nextProductSlide() {
+    this.productSlides.slideNext()
   }
 
   prevProductSlide() {
-    this.productSlides.slidePrev();
-  }
-
-  prevProductSlide2() {
-    this.productSlides2.slidePrev();
+    this.productSlides.slidePrev()
   }
 
   nextPromoSlide() {
-    this.promoSlides.slideNext();
-  }
-
-  nextPromoSlide2() {
-    this.promoSlides2.slideNext();
+    this.promoSlides.slideNext()
   }
 
   prevPromoSlide() {
-    this.promoSlides.slidePrev();
+    this.promoSlides.slidePrev()
   }
 
-  prevPromoSlide2() {
-    this.promoSlides2.slidePrev();
-  }
 }
