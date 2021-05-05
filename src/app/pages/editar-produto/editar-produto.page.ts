@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Products, ProductsService } from './../../services/products.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { LoadingController, ToastController } from '@ionic/angular';
-import { FileUpload } from '../_models/fileUpload';
-import { finalize } from 'rxjs/operators';
-import { AngularFireStorage } from '@angular/fire/storage';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { Component, OnInit } from '@angular/core'
+import { Product, ProductsService } from '../../services/products.service'
+import { ActivatedRoute, Router } from '@angular/router'
+import { LoadingController, ToastController } from '@ionic/angular'
+import { FileUpload } from '../_models/fileUpload'
+import { finalize } from 'rxjs/operators'
+import { AngularFireStorage } from '@angular/fire/storage'
+import { AngularFireDatabase } from '@angular/fire/database'
 
 
 @Component({
@@ -15,7 +15,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 })
 export class EditarProdutoPage implements OnInit {
 
-  product: Products = {
+  product: Product = {
     title: '',
     description: '',
     code: '',
@@ -44,10 +44,10 @@ export class EditarProdutoPage implements OnInit {
   private basePath = '/uploads';
 
   constructor(
-    private productsService: ProductsService, 
+    private productsService: ProductsService,
     private loadingController: LoadingController,
-    private route: ActivatedRoute,  
-    private router: Router, 
+    private route: ActivatedRoute,
+    private router: Router,
     private toastCtrl: ToastController,
     private storage: AngularFireStorage,
     private db: AngularFireDatabase,
@@ -94,6 +94,7 @@ export class EditarProdutoPage implements OnInit {
 
   uploadImage1(): void {
     const file = this.selectedFilesForImage1.item(0)
+    console.log(file)
     this.selectedFilesForImage1 = undefined
 
     if (file.size > 1000000) {
@@ -101,11 +102,11 @@ export class EditarProdutoPage implements OnInit {
     } else {
 
     this.currentFileUploadForImage1 = new FileUpload(file)
-    
+
       const filePath = `${this.basePath}/${this.currentFileUploadForImage1.file.name}`;
       const storageRef = this.storage.ref(filePath);
       const uploadTask = this.storage.upload(filePath, this.currentFileUploadForImage1.file);
-  
+
       uploadTask.snapshotChanges().pipe(
         finalize(() => {
           storageRef.getDownloadURL().subscribe(downloadURL => {
@@ -126,26 +127,25 @@ export class EditarProdutoPage implements OnInit {
 
     if (file.size > 1000000) {
       return alert('Este arquivo é grande demais, por favor escolha outro arquivo menor')
-    } else {
-
-    this.currentFileUploadForImage2 = new FileUpload(file)
-    
-      const filePath = `${this.basePath}/${this.currentFileUploadForImage2.file.name}`;
-      const storageRef = this.storage.ref(filePath);
-      const uploadTask = this.storage.upload(filePath, this.currentFileUploadForImage2.file);
-  
-      uploadTask.snapshotChanges().pipe(
-        finalize(() => {
-          storageRef.getDownloadURL().subscribe(downloadURL => {
-            this.currentFileUploadForImage2.url = downloadURL;
-            this.product.image2 = downloadURL
-            console.log(downloadURL)
-            this.currentFileUploadForImage2.name = this.currentFileUploadForImage2.file.name;
-            this.saveFileDataFromImage2(this.currentFileUploadForImage2);
-          });
-        })
-      ).subscribe();
     }
+
+    this.currentFileUploadForImage2 = new FileUpload(file);
+
+    const filePath = `${ this.basePath }/${ this.currentFileUploadForImage2.file.name }`;
+    const storageRef = this.storage.ref(filePath);
+    const uploadTask = this.storage.upload(filePath, this.currentFileUploadForImage2.file);
+
+    uploadTask.snapshotChanges().pipe(
+      finalize(() => {
+        storageRef.getDownloadURL().subscribe(downloadURL => {
+          this.currentFileUploadForImage2.url = downloadURL;
+          this.product.image2 = downloadURL;
+          console.log(downloadURL);
+          this.currentFileUploadForImage2.name = this.currentFileUploadForImage2.file.name;
+          this.saveFileDataFromImage2(this.currentFileUploadForImage2);
+        });
+      })
+    ).subscribe();
   }
 
   uploadImage3(): void {
@@ -157,11 +157,11 @@ export class EditarProdutoPage implements OnInit {
     } else {
 
     this.currentFileUploadForImage3 = new FileUpload(file)
-    
+
       const filePath = `${this.basePath}/${this.currentFileUploadForImage3.file.name}`;
       const storageRef = this.storage.ref(filePath);
       const uploadTask = this.storage.upload(filePath, this.currentFileUploadForImage3.file);
-  
+
       uploadTask.snapshotChanges().pipe(
         finalize(() => {
           storageRef.getDownloadURL().subscribe(downloadURL => {
@@ -185,11 +185,11 @@ export class EditarProdutoPage implements OnInit {
     } else {
 
     this.currentFileUploadForImage4 = new FileUpload(file)
-    
+
       const filePath = `${this.basePath}/${this.currentFileUploadForImage4.file.name}`;
       const storageRef = this.storage.ref(filePath);
       const uploadTask = this.storage.upload(filePath, this.currentFileUploadForImage4.file);
-  
+
       uploadTask.snapshotChanges().pipe(
         finalize(() => {
           storageRef.getDownloadURL().subscribe(downloadURL => {
