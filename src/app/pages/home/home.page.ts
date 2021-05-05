@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
   @ViewChild('promoSlides') promoSlides: IonSlides;
   @ViewChild('promoSlides2') promoSlides2: IonSlides;
 
-  loading = false
+  loading: boolean
 
   slideOpts = {
     slidesPerView: 1,
@@ -40,16 +40,12 @@ export class HomePage implements OnInit {
 
   promotionalProducts: Product[]
   recentProducts: Product[]
-  filteredList: Product[]
   products: Product[]
   categories: Category[]
 
-  isItemAvailable = false;
-
   constructor(
     private menu: MenuController,
-    private productsService: ProductsService,
-    private contactService: ContactService
+    private productsService: ProductsService
   ) {
   }
 
@@ -60,17 +56,18 @@ export class HomePage implements OnInit {
   }
 
   initializeProducts() {
+    this.loading = true
     this.productsService.getAllProducts().subscribe(res => {
       this.products = res
       this.promotionalProducts = res.filter(product => product.isPromotional === true)
       this.recentProducts = res.reverse()
-      this.filteredList = res
       console.log({
         promotional: this.promotionalProducts,
         recent: this.recentProducts,
         allProducts: this.products
 
       })
+      this.loading = false
     })
 
   }
