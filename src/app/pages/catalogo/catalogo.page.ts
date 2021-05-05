@@ -76,9 +76,9 @@ export class CatalogoPage implements OnInit {
 
   pageItems() {
     let currentItem = 0
-    let maxListSize = 9
+    let maxListSize = 12
     if (this.currentPage > 0) {
-      currentItem = maxListSize * this.currentPage - 9
+      currentItem = maxListSize * this.currentPage - 12
       maxListSize = maxListSize + currentItem
       return this.products.slice(currentItem, maxListSize)
     }
@@ -88,7 +88,7 @@ export class CatalogoPage implements OnInit {
     [ ...Array(pagesAmount).keys() ].map(item => item + 1)
 
   listAvailablePages = (allProducts: any[]) => {
-    const MAX_ITEMS_PER_PAGE = 9
+    const MAX_ITEMS_PER_PAGE = 12
     if (this.currentPage > 0) {
       const totalPages = Math.ceil(this.products.length / MAX_ITEMS_PER_PAGE)
       return this.generatePagesArrayByAmount(totalPages)
