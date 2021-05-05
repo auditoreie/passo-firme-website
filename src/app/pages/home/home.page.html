@@ -84,71 +84,54 @@
   </ion-grid>
 
   <ion-grid class="promo-grid">
-    <ion-row>
+    <ion-row class="ion-text-center">
       <ion-col>
         <ion-title color="secondary" class="product-title">Promoções</ion-title>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col class="arrow-back">
+    <ion-row class="ion-no-padding ion-text-center">
+      <ion-col size="1">
         <ion-icon name="chevron-back-circle" class="arrow-icons" color="secondary" (click)="prevPromoSlide()"></ion-icon>
       </ion-col>
-      <ion-slides [options]="slideOpts" class="skeleton-slides" #productSlides *ngIf="!promotionalProducts">
-        <ion-slide>
-          <ion-col>
-            <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
-          </ion-col>
-        </ion-slide>
-        <ion-slide>
-          <ion-col>
-            <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
-          </ion-col>
-        </ion-slide>
-        <ion-slide>
-          <ion-col>
-            <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
-          </ion-col>
-        </ion-slide>
-      </ion-slides>
-      <ion-slides [options]="slideOpts" class="product-slides" #promoSlides *ngIf="promotionalProducts">
-          <ion-slide *ngFor="let item of promotionalProducts" [routerLink]="['/product-details', item.id]">
+      <ion-col size="10">
+        <ion-slides [options]="slideOpts" class="skeleton-slides" #productSlides *ngIf="loading">
+          <ion-slide>
             <ion-col>
-              <ion-card class="product-card">
-                <img src="{{ item.image1 }}">
-              </ion-card>
-                <ion-title class="product-title">{{ item.title }}</ion-title> 
+              <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
             </ion-col>
           </ion-slide>
-      </ion-slides>
-      <ion-col class="arrow-forward">
+          <ion-slide>
+            <ion-col>
+              <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
+            </ion-col>
+          </ion-slide>
+          <ion-slide>
+            <ion-col>
+              <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
+            </ion-col>
+          </ion-slide>
+          <ion-slide>
+            <ion-col>
+              <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
+            </ion-col>
+          </ion-slide>
+        </ion-slides>
+        <ion-slides pager="true" [options]="slideOpts"  #promoSlides *ngIf="promotionalProducts">
+            <ion-slide *ngFor="let item of promotionalProducts" [routerLink]="['/product-details', item.id]">
+                <ion-card >
+                  <img alt="item.title"  src="{{ item.image1 }}"/>
+                  <ion-card-header>
+                    <ion-card-subtitle>
+                      {{ item.title }}
+                    </ion-card-subtitle>
+                  </ion-card-header>
+                </ion-card>
+            </ion-slide>
+        </ion-slides>
+      </ion-col>
+      <ion-col size="1">
         <ion-icon name="chevron-forward-circle" class="arrow-icons" color="secondary" (click)="nextPromoSlide()"></ion-icon>
       </ion-col>
-      
-      <ion-col class="arrow-back2">
-        <ion-icon name="chevron-back-circle" class="arrow-icons" color="secondary" (click)="prevPromoSlide2()"></ion-icon>
-      </ion-col>
-      <ion-slides [options]="slideOpts" class="skeleton-slides2" #productSlides2 *ngIf="!promotionalProducts">
-        <ion-slide>
-          <ion-col>
-            <ion-skeleton-text animated class="product-card"></ion-skeleton-text>
-          </ion-col>
-        </ion-slide>
-      </ion-slides>
-      <ion-slides [options]="slideOpts2" class="product-slides2" #promoSlides2 *ngIf="promotionalProducts">
-        <ion-slide *ngFor="let item of promotionalProducts" [routerLink]="['/product-details', item.id]">
-          <ion-col>
-            <ion-card class="product-card">
-              <img src="{{ item.image1 }}">
-            </ion-card>
-              <ion-title class="product-title">{{ item.title }}</ion-title> 
-          </ion-col>
-        </ion-slide>
-    </ion-slides>
-    <ion-col class="arrow-forward2">
-      <ion-icon name="chevron-forward-circle" class="arrow-icons" color="secondary" (click)="nextPromoSlide2()"></ion-icon>
-    </ion-col>
-    </ion-row>
-  </ion-grid>
 
     </ion-row>
     <ion-row>

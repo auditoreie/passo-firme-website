@@ -21,6 +21,11 @@
     margin-left: 40vw;
 }
 
+.bottom-spacing {
+  height: 40vh;
+  margin: 5vh 7vw 10vh 7vw;
+}
+
 .hyperlink:hover {
     border-bottom: 2px solid rgb(255, 0, 0);
     transition: all 0.1s ease-out;
@@ -28,6 +33,10 @@
 
 .hyperlink {
     text-decoration: none;
+}
+
+.searchbar-input.sc-ion-searchbar-ios {
+  background: none;
 }
 
 .toolbar-logo {
@@ -48,18 +57,13 @@
     --box-shadow: none;
     --icon-color: rgb(139, 139, 139);
     border-color: #b9b9b9;
-    border-width: 0.2vw;
+    border-width: 0.5px;
     border-style: solid;
-    border-radius: 3px;
+    border-radius: 0.5rem;
 }
 
 .promo-grid {
-    margin-top: 20vh;
-}
-
-.product-title {
-    text-align: center;
-    font-weight: bold;
+    margin-top: 7vh;
 }
 
 .arrow-icons {
