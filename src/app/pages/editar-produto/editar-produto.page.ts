@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Product, ProductsService } from '../../services/products.service'
 import { ActivatedRoute, Router } from '@angular/router'
-import { LoadingController, ToastController } from '@ionic/angular'
+import { LoadingController, MenuController, ToastController } from '@ionic/angular'
 import { FileUpload } from '../_models/fileUpload'
 import { finalize } from 'rxjs/operators'
 import { AngularFireStorage } from '@angular/fire/storage'
@@ -51,6 +51,7 @@ export class EditarProdutoPage implements OnInit {
     private toastCtrl: ToastController,
     private storage: AngularFireStorage,
     private db: AngularFireDatabase,
+    private menu: MenuController
   ) { }
 
   ngOnInit() { }
@@ -243,5 +244,9 @@ export class EditarProdutoPage implements OnInit {
       message: msg,
       duration: 2000
     }).then(toast => toast.present())
+  }
+
+  openMenu() {
+    this.menu.open()
   }
 }

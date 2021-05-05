@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category, ProductsService } from './../../services/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoadingController, MenuController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-editar-categoria',
@@ -23,7 +23,8 @@ export class EditarCategoriaPage implements OnInit {
     private loadingController: LoadingController,
     private route: ActivatedRoute,
     private router: Router,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private menu: MenuController
   ) { }
 
   ngOnInit() { }
@@ -64,5 +65,9 @@ export class EditarCategoriaPage implements OnInit {
       message: msg,
       duration: 2000
     }).then(toast => toast.present())
+  }
+
+  openMenu() {
+    this.menu.open()
   }
 }
