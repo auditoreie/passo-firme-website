@@ -4,10 +4,10 @@ import { removeAccents } from '../../helpers/accentsHelper';
 
 @Component({
   selector: 'app-searchbar',
-  templateUrl: './searchbar.component.html',
-  styleUrls: ['./searchbar.component.scss'],
+  templateUrl: './searchbar.page.html',
+  styleUrls: ['./searchbar.page.scss'],
 })
-export class SearchbarComponent implements OnInit {
+export class SearchbarPage implements OnInit {
 
   isItemAvailable = false
   filteredList: Product[]

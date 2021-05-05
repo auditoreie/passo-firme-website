@@ -8,17 +8,21 @@ import { CatalogoPageRoutingModule } from './catalogo-routing.module';
 
 import { CatalogoPage } from './catalogo.page';
 
-import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
-import { FooterComponent } from 'src/app/components/footer/footer.component';
-import { SearchbarComponent } from 'src/app/components/searchbar/searchbar.component';
+//Components
+import { NavbarPageModule } from 'src/app/components/navbar/navbar.module';
+import { SearchbarPageModule } from 'src/app/components/searchbar/searchbar.module';
+import { FooterPageModule } from 'src/app/components/footer/footer.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CatalogoPageRoutingModule
+    CatalogoPageRoutingModule,
+    NavbarPageModule,
+    SearchbarPageModule,
+    FooterPageModule
   ],
-  declarations: [CatalogoPage, NavbarComponent, FooterComponent, SearchbarComponent]
+  declarations: [CatalogoPage]
 })
 export class CatalogoPageModule {}

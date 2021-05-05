@@ -47,6 +47,18 @@ const routes: Routes = [
   {
     path: 'editar-categoria/:id',
     loadChildren: () => import('./pages/editar-categoria/editar-categoria.module').then( m => m.EditarCategoriaPageModule)
+  },
+  {
+    path: 'navbar',
+    loadChildren: () => import('./components/navbar/navbar.module').then( m => m.NavbarPageModule)
+  },
+  {
+    path: 'footer',
+    loadChildren: () => import('./components/footer/footer.module').then( m => m.FooterPageModule)
+  },
+  {
+    path: 'searchbar',
+    loadChildren: () => import('./components/searchbar/searchbar.module').then( m => m.SearchbarPageModule)
   }
 ];
 

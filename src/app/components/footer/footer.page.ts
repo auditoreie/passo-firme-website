@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactService } from '../../services/contact.service';
+import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
   selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss'],
+  templateUrl: './footer.page.html',
+  styleUrls: ['./footer.page.scss'],
 })
-export class FooterComponent implements OnInit {
+export class FooterPage implements OnInit {
 
   constructor(private contactService: ContactService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   openWhatsapp(): WindowProxy {
     return this.contactService.openWhatsappContact()

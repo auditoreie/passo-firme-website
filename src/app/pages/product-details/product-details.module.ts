@@ -8,16 +8,19 @@ import { ProductDetailsPageRoutingModule } from './product-details-routing.modul
 
 import { ProductDetailsPage } from './product-details.page';
 
-import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
-import { FooterComponent } from 'src/app/components/footer/footer.component';
+//Components
+import { NavbarPageModule } from 'src/app/components/navbar/navbar.module';
+import { FooterPageModule } from 'src/app/components/footer/footer.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProductDetailsPageRoutingModule
+    ProductDetailsPageRoutingModule,
+    NavbarPageModule,
+    FooterPageModule
   ],
-  declarations: [ProductDetailsPage, NavbarComponent, FooterComponent]
+  declarations: [ProductDetailsPage]
 })
 export class ProductDetailsPageModule {}
