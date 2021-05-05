@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuController, IonSlides } from '@ionic/angular';
-import { Products, Categories, ProductsService } from 'src/app/services/products.service';
+import { Product, Category, ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-home',
@@ -14,15 +14,29 @@ export class HomePage implements OnInit {
   @ViewChild('promoSlides') promoSlides: IonSlides;
   @ViewChild('promoSlides2') promoSlides2: IonSlides;
 
+  loading = false
+
   slideOpts = {
-    slidesPerView: 3,
-    spaceBetween: 20
+    slidesPerView: 1,
+    spaceBetween: 30,
+    breakpoints: {
+      480: {
+        slidesPerView: 2
+      },
+      700: {
+        slidesPerView: 3
+      },
+      1200: {
+        slidesPerView: 4
+      }
+
+    }
   };
 
   slideOpts2 = {
     slidesPerView: 1,
     spaceBetween: 20
-  };
+  }
 
   promotionalProducts: Products[]
   recentProducts: Products[]
@@ -31,20 +45,35 @@ export class HomePage implements OnInit {
   categories: Categories[]
 
   isItemAvailable = false;
-     
-  constructor(private menu: MenuController, private productsService: ProductsService) { }
+
+  constructor(
+    private menu: MenuController,
+    private productsService: ProductsService,
+    private contactService: ContactService
+  ) {
+  }
 
   ngOnInit() {
-    this.menu.enable(false);
-    this.productsService.getPromotionalProducts().subscribe(res => {
-      this.promotionalProducts = res;
-      console.log(res)
-    });
-    
+    this.menu.enable(false)
+    this.initializeProducts()
+    this.initializeCategories()
+  }
+
+  initializeProducts() {
     this.productsService.getAllProducts().subscribe(res => {
-      this.products = res;
-      console.log(res)
-    });
+      this.products = res
+      this.promotionalProducts = res.filter(product => product.isPromotional === true)
+      this.recentProducts = res.reverse()
+      this.filteredList = res
+      console.log({
+        promotional: this.promotionalProducts,
+        recent: this.recentProducts,
+        allProducts: this.products
+
+      })
+    })
+
+  }
 
     this.productsService.getAllCategories().subscribe(res => {
       this.categories = res;
