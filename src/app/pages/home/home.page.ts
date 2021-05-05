@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuController, IonSlides } from '@ionic/angular';
 import { Product, Category, ProductsService } from 'src/app/services/products.service';
+import { removeAccents } from '../../helpers/accentsHelper';
 
 @Component({
   selector: 'app-home',
@@ -75,44 +76,28 @@ export class HomePage implements OnInit {
 
   }
 
+  initializeCategories() {
     this.productsService.getAllCategories().subscribe(res => {
       this.categories = res;
-      console.log(res)
     });
-
-    this.productsService.getRecentProducts().subscribe(res => {
-      this.recentProducts = res;
-      console.log('produtos adicionados recentemente', res)
-    });
-
-    this.initializeDefaultList();
   }
 
-  initializeDefaultList() {
-    this.productsService.getAllProducts().subscribe(res => {
-      this.filteredList = res;
-      console.log(res)
-    }); 
-  } 
-
-  filterList(event: any) {
+  filterList(event: any): any {
     // Valor da barra de pesquisa
-    const searchTerm = event.target.value;
+    const rawSearchTerm = event.target.value as string
 
     // Se o valor for igual a uma string vazia, os itens não são filtrados
-    if (searchTerm && searchTerm.trim() !== '') {
-        this.isItemAvailable = true;
-        this.filteredList = this.products.filter((item) => {
-            return (item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
-        }) 
-    } else {
-        this.isItemAvailable = false;
-        return this.filteredList = this.products
+    if (!rawSearchTerm || rawSearchTerm.trim() === '') {
+      this.isItemAvailable = false;
+      return this.filteredList = this.products
     }
-  }
 
-  nextProductSlide() {
-    this.productSlides.slideNext();
+    const normalizedSearchTerm = removeAccents(rawSearchTerm.toLowerCase())
+    this.isItemAvailable = true;
+    this.filteredList = this.products.filter((item) => {
+      const normalizedTitle = removeAccents(item.title.toLowerCase())
+      return (normalizedTitle.indexOf(normalizedSearchTerm) > -1);
+    })
   }
 
   nextProductSlide2() {
