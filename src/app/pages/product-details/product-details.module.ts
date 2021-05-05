@@ -9,6 +9,8 @@ import { ProductDetailsPageRoutingModule } from './product-details-routing.modul
 import { ProductDetailsPage } from './product-details.page';
 
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +18,6 @@ import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
     IonicModule,
     ProductDetailsPageRoutingModule
   ],
-  declarations: [ProductDetailsPage]
+  declarations: [ProductDetailsPage, NavbarComponent, FooterComponent]
 })
 export class ProductDetailsPageModule {}

@@ -1,0 +1,53 @@
+.footer-grid {
+    background-color: #1a1a1a;
+    font-family: 'OpenSansRegular', Helvetica, serif;
+    color: #9d9fa6;
+    font-weight: 500;
+    height: 65vh;
+    padding: 8vh 10vw;
+    margin-top: 8vh;
+}
+
+.mail-hyperlink {
+    text-decoration: none;
+    color: var(--ion-color-primary)
+}
+
+.footer-info {
+  font-size: 0.9rem;
+}
+
+.logo-whatsapp {
+    width: 2vh;
+    height: 2vh;
+    margin-left: 0.5vw;
+    margin-top: 0.3vh;
+}
+
+.footer-copyright {
+    margin-top: 10vh;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #5a595c;
+}
+
+.footer-hyperlink {
+    text-decoration: none;
+    color: #5a595c;
+}
+
+.footer-title {
+  margin: 10vh 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) { 
+    .footer-grid {
+        height: 80vh;
+        font-size: 0.8rem;
+        padding: 8vh 10vw;
+    }
+}
+
+
