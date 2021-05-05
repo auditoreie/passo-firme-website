@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { Products, Categories, ProductsService } from 'src/app/services/products.service';
+import { Product, Category, ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -16,13 +16,16 @@ export class CatalogoPage implements OnInit {
     spaceBetween: 20
   };
 
-  category: Categories = {
+  category: Category = {
+    title: ''
+  }
+  activeCategory: Category = {
     title: ''
   }
 
-  products: Products[]
-  categories: Categories[]
-  filteredList: Products[]
+  products: Product[]
+  categories: Category[]
+  filteredList: Product[]
 
   isItemAvailable = false;
   isCategorySeeOptionEnable = false;
@@ -33,6 +36,7 @@ export class CatalogoPage implements OnInit {
     this.menu.enable(false);
     this.productsService.getAllProducts().subscribe(res => {
         this.products = res;
+        console.log({ products: res.filter(product => (product.categories) && (product.categories.length > 0))})
         this.currentPage = 1
       });
     this.productsService.getAllCategories().subscribe(categories => {
@@ -40,9 +44,35 @@ export class CatalogoPage implements OnInit {
     });
   }
 
-  seeCategory(id) {
-    this.isCategorySeeOptionEnable = true
-    console.log(id)
+  disableCurrentCategory() {
+    this.filteredList = this.products
+    this.activeCategory.title = ''
+    this.activeCategory.id = ''
+  }
+
+  filterProductsByCategory(categoryName: string): void {
+    if (this.products.length < 1) {
+      return
+    }
+    this.filteredList = this.products.filter(product => {
+      if (!product.categories || product.categories.length < 1 ) {
+        return product
+      }
+
+      return product.categories
+          .map(category => category.title)
+          .includes(categoryName)
+      }
+    )
+  }
+
+  seeCategory(category: Category)  {
+    if (category.id === this.activeCategory.id) {
+      return this.disableCurrentCategory()
+    }
+    // this.isCategorySeeOptionEnable = true
+    this.activeCategory = category
+    this.filterProductsByCategory(category.title)
   }
 
   filterList(event: any) {
@@ -54,7 +84,7 @@ export class CatalogoPage implements OnInit {
         this.isItemAvailable = true
         this.filteredList = this.products.filter((item) => {
             return (item.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1)
-        }) 
+        })
     } else {
         this.isItemAvailable = false
         return this.filteredList = this.products
@@ -78,7 +108,7 @@ export class CatalogoPage implements OnInit {
     const MAX_ITEMS_PER_PAGE = 9
     if (this.currentPage > 0) {
       const totalPages = Math.ceil(this.products.length / MAX_ITEMS_PER_PAGE)
-      return this.generatePagesArrayByAmount(totalPages) 
+      return this.generatePagesArrayByAmount(totalPages)
     }
   }
 
@@ -110,15 +140,15 @@ export class CatalogoPage implements OnInit {
   parsedResult() {
     if (this.currentPage > 0) {
       const pageNumbers = this.listAvailablePages(this.products)
-      const result = this.parsePageNumbers(pageNumbers, this.currentPage) 
-      return [ ...result] 
+      const result = this.parsePageNumbers(pageNumbers, this.currentPage)
+      return [ ...result]
     }
   }
 
   lastResultItem() {
     return this.parsedResult().length
   }
-   
+
   nextPage() {
     this.currentPage++
     console.log(this.currentPage)

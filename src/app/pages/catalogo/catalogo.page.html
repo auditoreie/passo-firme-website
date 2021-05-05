@@ -20,9 +20,6 @@
     </ion-grid>
   </ion-toolbar>
 
-<!--   <ion-row class="divider-row">
-    <ion-item-divider></ion-item-divider>
-  </ion-row> -->
 
   <ion-grid class="searchbar-grid">
     <ion-col>
@@ -40,20 +37,20 @@
     </ion-grid>
   </div>
 
-  <div *ngIf="currentPage > 0 && isItemAvailable === false && isCategorySeeOptionEnable === false">
+  <div>
     <ion-grid>
       <ion-row>
         <ion-col size="2">
           <ion-grid class="category-grid">
             <ion-row>
               <ion-col>
-                <ion-label>Categorias</ion-label>
+                <ion-label class="category-title">Categorias</ion-label>
               </ion-col>
             </ion-row>
             <ion-grid>
-              <ion-row *ngFor="let item of categories">
+              <ion-row *ngFor="let category of categories">
                 <ion-col>
-                  <ion-label (click)="seeCategory(item.id)">{{ item.title }}</ion-label>
+                  <ion-label (click)="seeCategory(category)" [class.category-active]="activeCategory.id === category.id">{{ category.title }}</ion-label>
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -61,140 +58,6 @@
         </ion-col>
         <ion-row class="product-row">
           <ion-col *ngFor="let item of pageItems()" size="4" [routerLink]="['/product-details', item.id]">
-            <ion-card class="product-card">
-                <img class="product-img" src="{{ item.image1 }}">
-            </ion-card>
-                <ion-title class="product-title">{{ item.title }}</ion-title>
-          </ion-col>
-        </ion-row>
-        <ion-col size="12">
-          <ion-grid class="category-grid2">
-            <ion-row>
-              <ion-col>
-                <ion-label>Categorias</ion-label>
-              </ion-col>
-            </ion-row>
-            <ion-grid>
-              <ion-row *ngFor="let item of categories">
-                <ion-col>
-                  <ion-label (click)="seeCategory(item.id)">{{ item.title }}</ion-label>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-grid>
-        </ion-col>
-        <ion-row class="product-row2">
-          <ion-col *ngFor="let item of pageItems()" size="6" [routerLink]="['/product-details', item.id]">
-            <ion-card class="product-card">
-                <img class="product-img" src="{{ item.image1 }}">
-            </ion-card>
-                <ion-title class="product-title">{{ item.title }}</ion-title>
-          </ion-col>
-        </ion-row>
-      </ion-row>
-    </ion-grid>
-  </div>
-
-  <div *ngIf="isItemAvailable === true">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="2">
-          <ion-grid class="category-grid">
-            <ion-row>
-              <ion-col>
-                <ion-label>Categorias</ion-label>
-              </ion-col>
-            </ion-row>
-            <ion-grid>
-              <ion-row *ngFor="let item of categories">
-                <ion-col>
-                  <ion-label (click)="seeCategory(item.id)">{{ item.title }}</ion-label>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-grid>
-        </ion-col>
-        <ion-row class="product-row">
-          <ion-col *ngFor="let item of filteredList" size="4" [routerLink]="['/product-details', item.id]">
-            <ion-card class="product-card">
-                <img class="product-img" src="{{ item.image1 }}">
-            </ion-card>
-                <ion-title class="product-title">{{ item.title }}</ion-title>
-          </ion-col>
-        </ion-row>
-        <ion-col size="12">
-          <ion-grid class="category-grid2">
-            <ion-row>
-              <ion-col>
-                <ion-label>Categorias</ion-label>
-              </ion-col>
-            </ion-row>
-            <ion-grid>
-              <ion-row *ngFor="let item of categories">
-                <ion-col>
-                  <ion-label (click)="seeCategory(item.id)">{{ item.title }}</ion-label>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-grid>
-        </ion-col>
-        <ion-row class="product-row2">
-          <ion-col *ngFor="let item of filteredList" size="6" [routerLink]="['/product-details', item.id]">
-            <ion-card class="product-card">
-                <img class="product-img" src="{{ item.image1 }}">
-            </ion-card>
-                <ion-title class="product-title">{{ item.title }}</ion-title>
-          </ion-col>
-        </ion-row>
-      </ion-row>
-    </ion-grid>
-  </div>
-
-  <div *ngIf="isCategorySeeOptionEnable === true">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="2">
-          <ion-grid class="category-grid">
-            <ion-row>
-              <ion-col>
-                <ion-label>Categorias (Habilitado)</ion-label>
-              </ion-col>
-            </ion-row>
-            <ion-grid>
-              <ion-row *ngFor="let item of categories">
-                <ion-col>
-                  <ion-label (click)="seeCategory(item.id)">{{ item.title }}</ion-label>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-grid>
-        </ion-col>
-        <ion-row class="product-row">
-          <ion-col *ngFor="let item of products" size="4" [routerLink]="['/product-details', item.id]">
-            <ion-card class="product-card">
-                <img class="product-img" src="{{ item.image1 }}">
-            </ion-card>
-                <ion-title class="product-title">{{ item.title }}</ion-title>
-          </ion-col>
-        </ion-row>
-        <ion-col size="12">
-          <ion-grid class="category-grid2">
-            <ion-row>
-              <ion-col>
-                <ion-label>Categorias (Habilitado)</ion-label>
-              </ion-col>
-            </ion-row>
-            <ion-grid>
-              <ion-row *ngFor="let item of categories">
-                <ion-col>
-                  <ion-label (click)="seeCategory(item.id)">{{ item.title }}</ion-label>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-grid>
-        </ion-col>
-        <ion-row class="product-row2">
-          <ion-col *ngFor="let item of pageItems()" size="6" [routerLink]="['/product-details', item.id]">
             <ion-card class="product-card">
                 <img class="product-img" src="{{ item.image1 }}">
             </ion-card>

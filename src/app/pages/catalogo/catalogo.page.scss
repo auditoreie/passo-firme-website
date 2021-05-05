@@ -54,12 +54,26 @@
 }
 
 .category-grid {
-    background-color: #dadada;
-    width: 12vw;
+    border-radius: 16px;
+    background-color: #1a1a1a0f;
+    color: #1a1a1a;
+    width: 13vw;
     text-align: center;
     margin-left: 8vw;
-    font-weight: 450;
+    line-height: 1.5;
     margin-top: 2vh;
+    font-family: "OpenSansRegular", Helvetica, serif;
+    font-weight: lighter;
+}
+
+.category-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--ion-color-primary)
+}
+
+.category-active {
+  color: var(--ion-color-primary)
 }
 
 .category-grid2 {
@@ -176,7 +190,7 @@
     outline-style: none;
 }
 
-@media screen and (max-width: 768px) { 
+@media screen and (max-width: 768px) {
     .menu-col {
         margin-top: 1vh;
         margin-left: 0vw;
@@ -234,7 +248,7 @@
         margin-top: 3vh;
         margin-bottom: 2vh;
     }
-    
+
     .footer-title {
         margin-left: 5vw;
         white-space: nowrap;
