@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
- 
-export interface Products {
+
+export interface Product {
   id?: string;
-  createdAt?: number;
+  createdAt?: number | string;
   title: string;
   description: string;
   code: string;
@@ -15,9 +15,10 @@ export interface Products {
   image2: string;
   image3: string;
   image4: string;
+  categories?: Category[]
 }
 
-export interface Categories {
+export interface Category {
   id?: string;
   createdAt?: number;
   title: string;
@@ -28,30 +29,30 @@ export interface ClickCounter {
   upClick: number;
   clicks: number
 }
- 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  private productsCollection: AngularFirestoreCollection<Products>;
-  private promotionalProductsCollection: AngularFirestoreCollection<Products>
-  private recentProductsCollection: AngularFirestoreCollection<Products>
-  private categoriesCollection: AngularFirestoreCollection<Categories>
+  private productsCollection: AngularFirestoreCollection<Product>;
+  private promotionalProductsCollection: AngularFirestoreCollection<Product>
+  private recentProductsCollection: AngularFirestoreCollection<Product>
+  private categoriesCollection: AngularFirestoreCollection<Category>
   private totalClicksCollection: AngularFirestoreCollection<ClickCounter>
 
-  private products: Observable<Products[]>
-  private promotionalProducts: Observable<Products[]>
-  private recentProducts: Observable<Products[]>
-  private categories: Observable<Categories[]>
+  private products: Observable<Product[]>
+  private promotionalProducts: Observable<Product[]>
+  private recentProducts: Observable<Product[]>
+  private categories: Observable<Category[]>
   private totalClicks: Observable<ClickCounter[]>
- 
+
   constructor(db: AngularFirestore) {
-    this.categoriesCollection = db.collection<Categories>('categories', ref => ref.orderBy('createdAt', 'desc'))
-    this.productsCollection = db.collection<Products>('products', ref => ref.orderBy('createdAt', 'desc'))
-    this.promotionalProductsCollection = db.collection<Products>('products', ref => ref.where('isPromotional', '==', true).orderBy('createdAt', 'desc'))
-    this.recentProductsCollection = db.collection<Products>('products', ref => ref.orderBy('createdAt', 'desc').limit(9))
+    this.categoriesCollection = db.collection<Category>('categories', ref => ref.orderBy('createdAt', 'desc'))
+    this.productsCollection = db.collection<Product>('products', ref => ref.orderBy('createdAt', 'desc'))
+    this.promotionalProductsCollection = db.collection<Product>('products', ref => ref.where('isPromotional', '==', true).orderBy('createdAt', 'desc'))
+    this.recentProductsCollection = db.collection<Product>('products', ref => ref.orderBy('createdAt', 'desc').limit(9))
     this.totalClicksCollection = db.collection<ClickCounter>('clicks')
- 
+
     this.products = this.productsCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -102,7 +103,7 @@ export class ProductsService {
       })
     );
   }
- 
+
   getAllProducts() {
     return this.products
   }
@@ -130,14 +131,14 @@ export class ProductsService {
   }
 
   getCategory(id) {
-    return this.categoriesCollection.doc<Categories>(id).valueChanges()
+    return this.categoriesCollection.doc<Category>(id).valueChanges()
   }
 
-  addCategory(categories: Categories): Promise<DocumentReference> {
+  addCategory(categories: Category): Promise<DocumentReference> {
     return this.categoriesCollection.add(categories)
   }
 
-  updateCategory(category: Categories): Promise<void> {
+  updateCategory(category: Category): Promise<void> {
     return this.categoriesCollection.doc(category.id).update({
       title: category.title
     })
@@ -147,28 +148,28 @@ export class ProductsService {
     return this.categoriesCollection.doc(id).delete();
   }
 
-  getProductByCategory(category: Categories, id: string) {
+  getProductByCategory( category: Category, id: string) {
     /* return this.categoriesCollection.doc(`categories/${category.id}/products`).valueChanges() */
     /* return this.categoriesCollection.doc<Categories>(id).collection('products').valueChanges() */
   }
 
-  addProductByCategory(category: Categories, db: AngularFirestore, products: Products) {
+  addProductByCategory( category: Category, db: AngularFirestore, products: Product) {
     return db.collection(`categories/${category.id}/products`).add(products)
   }
 
   getProduct(id) {
-    return this.productsCollection.doc<Products>(id).valueChanges();
+    return this.productsCollection.doc<Product>(id).valueChanges();
   }
 
-  addProduct(products: Products): Promise<DocumentReference> {
+  addProduct(products: Product): Promise<DocumentReference> {
     return this.productsCollection.add(products);
   }
- 
-  updateProduct(product: Products): Promise<void> {
-    return this.productsCollection.doc(product.id).update({  
-      code: product.code, 
-      title: product.title, 
-      description: product.description, 
+
+  updateProduct(product: Product): Promise<void> {
+    return this.productsCollection.doc(product.id).update({
+      code: product.code,
+      title: product.title,
+      description: product.description,
       isPromotional: product.isPromotional,
       availableSizes: product.availableSizes,
       image1: product.image1,
@@ -177,7 +178,7 @@ export class ProductsService {
       image4: product.image4
      });
   }
- 
+
   deleteProduct(id: string): Promise<void> {
     return this.productsCollection.doc(id).delete();
   }

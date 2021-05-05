@@ -38,11 +38,11 @@ export class HomePage implements OnInit {
     spaceBetween: 20
   }
 
-  promotionalProducts: Products[]
-  recentProducts: Products[]
-  filteredList: Products[]
-  products: Products[]
-  categories: Categories[]
+  promotionalProducts: Product[]
+  recentProducts: Product[]
+  filteredList: Product[]
+  products: Product[]
+  categories: Category[]
 
   isItemAvailable = false;
 
