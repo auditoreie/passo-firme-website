@@ -103,16 +103,11 @@
     border-radius: 8px;
 }
 
-.button-grid {
-   margin-top: 7vh;
-   width: 32vw;
-}
-
-.button {
-    width: 30vw;
-    height: 7vh;
-    text-transform: none;
-    font-size: 16px;
+.catalog-button {
+  text-transform: none;
+  --border-radius: 0.5em;
+  height: 3rem;
+  font-family: "OpenSansRegular", Helvetica, serif;
 }
 
 .footer-grid {
@@ -246,12 +241,6 @@
 
     .promo-grid {
         margin-top: 7vh;
-    }
-
-    .button {
-        width: 60vw;
-        font-size: 14px;
-        margin-left: -17vw;
     }
 
     .footer-grid {
