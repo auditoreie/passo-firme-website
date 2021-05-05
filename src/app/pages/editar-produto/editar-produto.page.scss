@@ -5,6 +5,10 @@
     margin-left: 4vw;
 }
 
+.menu-button {
+    display: none;
+}
+
 .input-col {
     left: 4vw;
     margin-top: 5vh;
@@ -120,7 +124,13 @@
     height: 9vh;
 }
 
-@media screen and (max-width: 768px) { 
+@media screen and (max-width: 768px) {
+    .menu-button {
+        display: flex;
+        margin-top: -2vh;
+        margin-bottom: 3vh;
+    }
+     
     .checkbox-col {
         top: 1vh;
     }

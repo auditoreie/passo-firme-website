@@ -5,6 +5,10 @@
     margin-left: 4vw;
 }
 
+.menu-button {
+    display: none;
+}
+
 .input-col {
     left: 4vw;
     margin-top: 10vh;
@@ -63,7 +67,13 @@
     outline-style: none;
 }
 
-@media screen and (max-width: 768px) { 
+@media screen and (max-width: 768px) {
+    .menu-button {
+        display: flex;
+        margin-top: -2vh;
+        margin-bottom: 3vh;
+    }
+     
     .cancel-button {
         width: 35vw;
         height: 7vh;
