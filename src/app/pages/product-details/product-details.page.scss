@@ -1,19 +1,12 @@
 .product-grid {
     margin-top: 10vh;
-    margin-left: 10vw;
+    margin-left: 25%;
 }
 
 .product-card {
     width: 50vw;
-    height: 70vh;
-}
-
-.product-grid2 {
-    display: none;
-}
-
-.product-card2 {
-    display: none;
+    height: auto;
+    border-radius: 0.5rem;
 }
 
 .product-img {
@@ -30,6 +23,7 @@
 
 .product-row {
     margin-bottom: 5vh;
+    max-inline-size: 50vw;
 }
 
 .product-title {
@@ -41,12 +35,9 @@
 }
 
 .product-button {
-    width: 20vw;
+    margin-bottom: 3vh;
+    width: 50vw;
     text-transform: none;
-}
-
-.product-button2 {
-    display: none;
 }
 
 .card-grid {
@@ -56,74 +47,27 @@
 
 .card-img {
     width: 15vw;
+    height: auto;
     border-radius: 0.5rem;
 }
 
-@media screen and (max-width: 768px) { 
-    .menu-col {
-        margin-top: 1vh;
-        margin-left: 0vw;
-    }
-
-    .toolbar-logo {
-        width: auto;
-        max-width: 60%;
-        height: auto;
-        max-height: 60%;
-    }
-
-    .divider-row {
-        margin-top: -5vh;
-    }
-
+@media screen and (max-width: 768px) {
     .product-grid {
-        display: none;
+        margin-top: 2vh;
+        margin-left: 0%;
     }
-    
+
     .product-card {
-        display: none;
-    }
-
-    .product-grid2 {
-        display: flex;
-        margin-top: 1vh;
-        margin-left: 6vw;
-    }
-    
-    .product-card2 {
-        display: flex;
-        width: 80vw;
-        height: 30vh;
-    }
-
-    .product-button {
-        display: none;
-    }
-
-    .product-button2 {
-        display: flex;
-        width: 80vw;
-        margin-left: -2vw;
-        margin-bottom: 1vh;
-        text-transform: none;
-    }
-
-    .infos-row {
-        margin-top: -5vh;
-    }
-
-    .card-grid {
-        display: none;
-    }
-    
-    .card-img {
+        width: 85vw;
         height: auto;
     }
 
-    .footer-map2 {
-        display: flex;
-        top: 1vh;
-        left: 0vw;
-        margin-bottom: 4vh;
+    .card-img {
+        width: 23vw;
+        height: auto;
+    }
+
+    .product-row {
+        max-inline-size: 70vw;
     }
 }

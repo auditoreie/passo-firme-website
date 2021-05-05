@@ -13,10 +13,10 @@
     </ion-grid>
   </div>
 
-  <div>
+  <div *ngIf="currentPage > 0">
     <ion-grid>
       <ion-row>
-        <ion-col size="2">
+        <ion-col size="12">
           <ion-grid class="category-grid">
             <ion-row>
               <ion-col>
@@ -32,19 +32,25 @@
             </ion-grid>
           </ion-grid>
         </ion-col>
-        <ion-row class="product-row">
-          <ion-col *ngFor="let item of pageItems()" size="4" [routerLink]="['/product-details', item.id]">
-            <ion-card class="product-card">
-                <img class="product-img" src="{{ item.image1 }}">
-            </ion-card>
-                <ion-title class="product-title">{{ item.title }}</ion-title>
-          </ion-col>
-        </ion-row>
+        <ion-col size-xs="auto" size-md="auto">
+          <ion-row class="ion-margin">
+            <ion-col *ngFor="let item of pageItems()" [routerLink]="['/product-details', item.id]">
+              <ion-card class="product-card">
+                <img alt="item.title" class="product-img" src="{{ item.image1 }}"/>
+                <ion-card-header class="ion-text-center">
+                  <ion-card-subtitle>
+                    {{ item.title }}
+                  </ion-card-subtitle>
+                </ion-card-header>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </div>
 
-  <ion-grid class="arrow-grid">
+  <ion-grid class="arrow-grid" *ngIf="currentPage > 0">
     <ion-row>
       <ion-col>
         <ion-icon *ngIf="currentPage > 1" name="chevron-back-circle" class="arrow-icons" color="secondary" (click)="prevPage()"></ion-icon>
