@@ -116,56 +116,29 @@
 }
 
 .footer-grid {
-    margin-top: 10vh;
-    background-color: #f1f1f1;
-    font-family: 'OpenSansRegular';
-    color: #5e5c63;
+    background-color: #1a1a1a;
+    font-family: 'OpenSansRegular', Helvetica, serif;
+    color: #9d9fa6;
     font-weight: 500;
-}
-
-.footer-titles {
-    margin-top: 10vh;
-    margin-bottom: 2vh;
-}
-
-.footer-title {
-    margin-left: 5vw;
-    font-size: 24px;
-}
-
-.footer-subtitle {
-    font-size: 24px;
-    margin-left: 16vw;
-}
-
-.footer-subtitle2 {
-    display: none;
+    padding: 8vh 10vw;
 }
 
 .footer-info {
-    margin-left: 5vw;
-    font-size: 16px;
+  font-size: 0.9rem;
 }
 
 .logo-whatsapp {
-    width: 2vw;
-    height: 4vh;
-    margin-left: 1vw;
-}
-
-.footer-map {
-    top: -25vh;
-    left: 0vw;
-}
-
-.footer-map2 {
-    display: none;
+    width: 2vh;
+    height: 2vh;
+    margin-left: 0.5vw;
+    margin-top: 0.3vh;
 }
 
 .footer-copyright {
+    margin-top: 10vh;
     text-align: center;
+    font-size: 0.9rem;
     color: #5a595c;
-    font-weight: bold;
 }
 
 .footer-hyperlink {
@@ -173,13 +146,19 @@
     color: #5a595c;
 }
 
+.footer-title {
+  margin: 10vh 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 :focus {
-    outline: 0;
+  outline: 0;
     outline-color: transparent;
     outline-style: none;
 }
 
-@media screen and (max-width: 768px) { 
+@media screen and (max-width: 768px) {
     .menu-col {
         margin-top: 1vh;
         margin-left: 0vw;
@@ -276,19 +255,11 @@
     }
 
     .footer-grid {
-        height: 70vh;
+        height: 120vh;
+        font-size: 0.8rem;
+        padding: 8vh 10vw;
     }
 
-    .footer-titles {
-        margin-top: 3vh;
-        margin-bottom: 2vh;
-    }
-    
-    .footer-title {
-        margin-left: 5vw;
-        white-space: nowrap;
-        font-size: 24px;
-    }
 
     .footer-subtitle {
         display: none;
@@ -312,4 +283,4 @@
         left: 0vw;
         margin-bottom: 4vh;
     }
-}
+}}
