@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 export interface Product {
   id?: string;
-  createdAt?: number | string;
+  createdAt?: number;
   title: string;
   description: string;
   code: string;
@@ -35,22 +35,16 @@ export interface ClickCounter {
 })
 export class ProductsService {
   private productsCollection: AngularFirestoreCollection<Product>;
-  private promotionalProductsCollection: AngularFirestoreCollection<Product>
-  private recentProductsCollection: AngularFirestoreCollection<Product>
   private categoriesCollection: AngularFirestoreCollection<Category>
   private totalClicksCollection: AngularFirestoreCollection<ClickCounter>
 
   private products: Observable<Product[]>
-  private promotionalProducts: Observable<Product[]>
-  private recentProducts: Observable<Product[]>
   private categories: Observable<Category[]>
   private totalClicks: Observable<ClickCounter[]>
 
   constructor(db: AngularFirestore) {
     this.categoriesCollection = db.collection<Category>('categories', ref => ref.orderBy('createdAt', 'desc'))
     this.productsCollection = db.collection<Product>('products', ref => ref.orderBy('createdAt', 'desc'))
-    this.promotionalProductsCollection = db.collection<Product>('products', ref => ref.where('isPromotional', '==', true).orderBy('createdAt', 'desc'))
-    this.recentProductsCollection = db.collection<Product>('products', ref => ref.orderBy('createdAt', 'desc').limit(9))
     this.totalClicksCollection = db.collection<ClickCounter>('clicks')
 
     this.products = this.productsCollection.snapshotChanges().pipe(
@@ -64,26 +58,6 @@ export class ProductsService {
     );
 
     this.categories = this.categoriesCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        });
-      })
-    );
-
-    this.promotionalProducts = this.promotionalProductsCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        });
-      })
-    );
-
-    this.recentProducts = this.recentProductsCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -110,14 +84,6 @@ export class ProductsService {
 
   getAllCategories() {
     return this.categories
-  }
-
-  getPromotionalProducts() {
-    return this.promotionalProducts
-  }
-
-  getRecentProducts() {
-    return this.recentProducts
   }
 
   getTotalClicks() {

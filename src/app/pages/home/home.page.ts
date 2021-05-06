@@ -60,7 +60,7 @@ export class HomePage implements OnInit {
     this.productsService.getAllProducts().subscribe(res => {
       this.products = res
       this.promotionalProducts = res.filter(product => product.isPromotional === true)
-      this.recentProducts = res.reverse()
+      this.recentProducts = res.slice(Math.max(this.products.length -10, 0))
       console.log({
         promotional: this.promotionalProducts,
         recent: this.recentProducts,

@@ -37,14 +37,10 @@ export class DashboardPage implements OnInit {
 
     this.productsService.getAllProducts().subscribe(res => {
       this.products = res;
+      this.promotionalProducts = res.filter(product => product.isPromotional === true)
+      this.totalPromotionalProductsItems = this.promotionalProducts.length
       this.totalProductsItems = this.products.length
       console.log(res, this.products.length)
-    });
-
-    this.productsService.getPromotionalProducts().subscribe(res => {
-      this.promotionalProducts = res;
-      this.totalPromotionalProductsItems = this.promotionalProducts.length
-      console.log(res, this.promotionalProducts.length)
     });
 
     this.productsService.getAllCategories().subscribe(res => {
